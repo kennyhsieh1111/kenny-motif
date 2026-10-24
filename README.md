@@ -15,6 +15,10 @@ Port 8080 busy? `PORT=8081 docker compose up -d`.
 
 Fonts load from Google Fonts; everything else is local. Google Analytics tag removed.
 
+## Architecture
+
+[`docs/architecture.html`](docs/architecture.html) is an interactive system diagram (open it in a browser). In short: a push to `main` makes GitHub Actions upload `site/` to GitHub Pages with no build step; `docker compose` serves the same folder through nginx for local preview. Both pages (`index.html`, `symphonies.html`) load `i18n.js` in `<head>`, keep all content as JS objects inline, and remember language, theme, favourites, lite mode and symphony unlocks in `localStorage`. The only server call is `likes.php` for favourite counts, made on `localhost` only; that endpoint is not in this repo.
+
 ## Features
 
 - **Language toggle** (EN / 中) and **theme toggle** (sun / moon) in the header. Choice is saved in `localStorage`; first visit follows the browser language and OS colour scheme.
