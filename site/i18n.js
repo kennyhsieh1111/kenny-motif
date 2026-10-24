@@ -14,14 +14,14 @@ H.lang=lang==='en'?'en':'zh-Hant-TW';H.dataset.theme=theme;
 
 const EN={
 /* ---- chrome / static ---- */
-'肯尼計畫':"Kenny Project",'菜單':"Menu",'後援品牌':"Partners",'契機':"Story",'交響曲':"Symphonies",
+'菜單':"Menu",'後援品牌':"Partners",'契機':"Story",'交響曲':"Symphonies",
 '回到菜單':"Back to menu",'頁面分頁':"Page tabs",
-'《動機':"“",'》':"”",'活動契機 ›':"Why this event ›",
+'《上桌之前':"“",'》':"”",'活動契機 ›':"Why this event ›",
 '｜2026 WCIGS 世界咖啡烈酒大賽亞軍':"｜Runner-up, 2026 World Coffee in Good Spirits",
 '2026 WCIGS 世界咖啡烈酒大賽亞軍':"Runner-up, 2026 World Coffee in Good Spirits Championship",
 '全品項無酒精':"All alcohol-free",'免預約・現場排隊':"No booking · walk-in queue",'可內用・可外帶':"Dine-in or takeaway",
-'調飲的動機，決定品味的維度':"The motive behind a drink sets the dimension of taste",
-'點擊照片裡的任一杯、或下方清單中的品項，看飲品的完整介紹。':"Tap any cup in the photo, or an item in the list below, for the full story of each drink.",
+'上桌的那一刻，是所有準備的總和':"The serve is the sum of everything prepared before it",
+'點開照片或清單裡的任一杯，看它上桌之前走過的每一步。':"Tap any cup, in the photo or the list below, to see every step it took before reaching the table.",
 '十杯客座調飲的合照':"Group photo of the ten guest drinks",'照片為示意圖':"Photo for illustration",
 '顯示所有杯名':"Show all names",'隱藏杯名':"Hide names",
 '飲品':"Drinks",'小點':"Bites",'每一站的小點都不一樣，依場次列出。':"The bites differ at every stop, listed by venue.",
@@ -31,14 +31,14 @@ const EN={
 '我們的整套菜單想滿足不可能的三角：風味有重點又能品味層次、跨越時間場地都能完美複刻、進場營業到撤場的流程最簡化──沒有這次跨界的後援品牌們，這次活動無法發生。':"Our whole menu tries to satisfy an impossible triangle: flavour with focus yet layers to savour, perfect replication across time and venues, and the simplest possible flow from setup to teardown. Without the cross-industry supporting brands, this event could not have happened.",
 '後援':"Supporters",
 '貪，開拓了品味的疆域；':"Craving expands the territory of taste;",
-'探索風味彷彿是個癮頭，曾經驚艷的歸為日常，驅策我們尋覓下一個寶藏。這一次的《肯尼計畫》，我們貪的是不同的「動機」。':"Exploring flavour feels like an addiction: what once amazed becomes everyday, driving us to seek the next treasure. In this Kenny Project, what we crave is different 'motives'.",
-'AD Cafe 邀請到 2026 世界咖啡烈酒大賽亞軍阿問，在走過比賽、走過實驗、走過日常之後，與北中南指標性的獨立咖啡館一起碰撞，把調飲的各種動機拆解、轉化，再呈現出來。':"AD Cafe invited A-Wen, runner-up of the 2026 World Coffee in Good Spirits Championship, to collide with landmark independent cafés across northern, central and southern Taiwan after competitions, experiments and daily routine, taking apart, transforming and re-presenting the many motives behind mixed drinks.",
-'──我們認為':"── We believe",'動機，決定了品味的維度。':"Motive sets the dimension of taste.",
-'動機的分岔':"Where motives fork",'啟動':"Initiators",'落點':"Venues",
+'探索風味彷彿是個癮頭，曾經驚艷的歸為日常，驅策我們尋覓下一個寶藏。這一次的《Le Dressage》，我們貪的，是一杯飲品上桌之前，那些看不見的準備。':"Exploring flavour feels like an addiction: what once amazed becomes everyday, driving us to seek the next treasure. This time at Le Dressage, what we crave is the unseen preparation behind every drink before it reaches the table.",
+'AD Cafe 邀請到 2026 世界咖啡烈酒大賽亞軍阿問，在走過比賽、走過實驗、走過日常之後，與北中南指標性的獨立咖啡館一起碰撞，把一杯調飲從構思到上桌的每一步拆解、轉化，再呈現出來。':"AD Cafe invited A-Wen, runner-up of the 2026 World Coffee in Good Spirits Championship, to collide with landmark independent cafés across northern, central and southern Taiwan after competitions, experiments and daily routine, taking apart and transforming every step of a mixed drink, from first idea to the table, and presenting it anew.",
+'──我們認為':"── We believe",'上桌之前的準備，決定了品味的維度。':"The preparation behind the serve sets the dimension of taste.",
+'兩種準備，兩種上桌':"Two ways to prepare, two ways to serve",'啟動':"Initiators",'落點':"Venues",
 'AD Cafe 阿迪與木木':"AD Cafe's Adi and Mumu",'AD Cafe｜阿迪 × 木木':"AD Cafe｜Adi × Mumu",
 '台灣精品咖啡文化影響力品牌':"An influential voice in Taiwan's specialty coffee culture",
 '多年來透過影音、圖文和實體活動，成為建立品味文化的引路人。咖啡是重要的生活儀式，而味覺沒有標準答案，更重要的是探索自己的喜好、錨定個人的品味。':"For years, through video, writing and live events, they have guided people in building a culture of taste. Coffee is an important daily ritual, and there is no standard answer in flavour; what matters is exploring your own preferences and anchoring your personal taste.",
-'《貪杯》是我們的客座企劃，代表企劃還包括個性化聯名咖啡 I 人《默默》與 E 人《煦煦》，並發起《遍地開花全台串聯計畫》。':"Kenny Project is our guest series; sister projects include the personality-based collaboration coffees Momo (for introverts) and Xuxu (for extroverts), and the island-wide Blooming Everywhere collaboration.",
+'《貪杯》是我們的客座企劃，代表企劃還包括個性化聯名咖啡 I 人《默默》與 E 人《煦煦》，並發起《遍地開花全台串聯計畫》。':"Le Dressage is our guest series; sister projects include the personality-based collaboration coffees Momo (for introverts) and Xuxu (for extroverts), and the island-wide Blooming Everywhere collaboration.",
 '阿問在 2026 WCIGS 世界賽舞台上':"A-Wen on the 2026 WCIGS world stage",
 '城市峽谷｜「阿問」 吳柄頡 Sion Wu':"Urban Canyon｜Sion Wu, “A-Wen”",
 '台灣近年最受矚目的咖啡調酒師之一，拿下四屆（2019、2020、2022、2025）TCIGS 台灣咖啡調酒大賽冠軍。以精準的風味拆解與重組聞名，獨創「杯測表 × 風味輪」調飲研發系統。':"One of Taiwan's most watched coffee bartenders in recent years, four-time champion (2019, 2020, 2022, 2025) of the Taiwan Coffee in Good Spirits Championship. Known for precise flavour deconstruction and recombination, he created a “cupping form × flavour wheel” drink development system.",
@@ -46,12 +46,12 @@ const EN={
 '謝謝你，來多貪一杯':"Thank you for coming for one more cup",
 '每一杯背後，都有一個想被理解的瞬間。如果今天有哪一口讓你若有所思，歡迎把那個瞬間留下來，也可以標記我們。每一則分享我們都會認真閱讀回覆，這場活動中合力的每一位夥伴也同樣期待與你交流。':"Behind every cup is a moment waiting to be understood. If a sip today gave you pause, feel free to capture that moment and tag us. We read and reply to every post, and every partner in this event is just as eager to hear from you.",
 '複製所有標記':"Copy all tags",
-'肯尼計畫《動機 MOTIF》feat. 阿問':"Kenny Project “MOTIF” feat. A-Wen",
+'Le Dressage《上桌之前 BEHIND THE SERVE》feat. 阿問':"Le Dressage “Behind the Serve” feat. A-Wen",
 '靈感來自 AD Cafe《動機 MOTIF》企劃 ›':"Inspired by AD Cafe's “MOTIF” project ›",
 '飲品照片為示意圖，實際出杯以現場為準。':"Drink photos are for illustration; actual serves may vary.",
 '上一項':"Previous",'下一項':"Next",'關閉':"Close",
 /* ---- labels written by the render code ---- */
-'今天':"Today",'不含咖啡':"No coffee",'阿迪手沖單品':"Adi's pour-over",'研發動機：':"Motive: ",'研發動機':"Motive",
+'今天':"Today",'不含咖啡':"No coffee",'阿迪手沖單品':"Adi's pour-over",'上桌之前：':"Before the serve: ",'上桌之前':"Before the serve",
 '收藏':"Save",'已收藏':"Saved",'已複製':"Copied",'看 9 種口味 ›':"See 9 flavours ›",'看介紹 ›':"Details ›",
 '還沒有收藏的飲品。按飲品右下角的愛心，就會出現在這裡。':"No favourites yet. Tap the heart on a drink and it will show up here.",
 '沒有符合的飲品。':"No matching drinks.",
@@ -145,13 +145,13 @@ const EN={
 '主旋律':"The Main Theme",'白葡萄':"White grape",'洋甘菊':"Chamomile",'綠豆蔻':"Green cardamom",
 '同個光譜的大眾端，輕鬆的白葡萄泡泡':"The popular end of the same spectrum: an easy white-grape foam",
 '主旋律是樂曲中\n最抓耳的核心部分\n以同樣材料架構製作大眾流行化的一杯\n用濃縮咖啡直球對決甜蜜的白葡萄\n並以花香和香料來點綴\n均值後有綿密的泡沫口感':"The main theme is the catchiest\nCore part of a piece of music\nThe same ingredient structure, made into a popular, crowd-pleasing cup\nEspresso goes head-on against sweet white grape\nAccented with florals and spice\nBlended into a dense, creamy foam",
-'大眾化的動機。主旋律通常是樂曲中最抓耳的核心部分。用濃縮咖啡與白葡萄，以甜蜜的直球風味對決，再以花香和香料點綴，均值後做成綿密的泡沫口感，是每個人都能快速理解、並且喜愛的飲品。':"The motive of going mainstream. The main theme is usually the catchiest core of a piece. Espresso and white grape face off in a sweet, straightforward flavour, accented with florals and spice and blended into a dense foam: a drink everyone can grasp quickly and love.",
+'大眾化的呈現。主旋律通常是樂曲中最抓耳的核心部分。用濃縮咖啡與白葡萄，以甜蜜的直球風味對決，再以花香和香料點綴，均值後做成綿密的泡沫口感，是每個人都能快速理解、並且喜愛的飲品。':"The mainstream serve. The main theme is usually the catchiest core of a piece. Espresso and white grape face off in a sweet, straightforward flavour, accented with florals and spice and blended into a dense foam: a drink everyone can grasp quickly and love.",
 '主旋律和變奏曲是霓裡用同一組材料做出的兩杯，一杯走向大眾，一杯走向實驗。建議兩杯一起點，比較看看。':"The Main Theme and The Variation are two cups LOOP IN NEON made from the same set of ingredients, one heading for the crowd, one for experiment. We suggest ordering both and comparing.",
 '霓裡的咖啡':"LOOP IN NEON's coffee",'中深焙 衣索比亞水洗濃縮咖啡':"Medium-dark roast washed Ethiopian espresso",'綠豆蔻、洋甘菊薄糖水、白葡萄汁':"Green cardamom, light chamomile syrup, white grape juice",
 '變奏曲':"The Variation",'檜木':"Hinoki",'柑橘':"Citrus",
 '同個光譜實驗性的探索，白葡萄上的層次極限':"An experimental exploration on the same spectrum, pushing white grape's layers to the limit",
 '同一個主題下\n打破常規帶來的豐富的潛力\n在同樣材料架構下不計成本的實驗性探索\n混合不同焙度的冷萃讓風味跨度更寬\n銜接白花、柑橘、木質精油的層次變化\n就像一首能驚艷四座的變奏曲':"Under the same theme\nThe rich potential of breaking convention\nAn experimental exploration on the same ingredient structure, cost no object\nBlending cold brews of different roasts widens the flavour span\nBridging layers of white flowers, citrus and woody essential oils\nLike a variation that stuns the whole room",
-'獨立化的動機。象徵在同一個主題下，進行不計成本、打破常規的實驗性探索。混合不同焙度的冷萃，讓衣索比亞水洗的風味跨度更寬，同時往白花、柑橘、木質精油等方向延伸搭配。風味層次富有變化，就像一首能驚艷四座的變奏曲。':"The motive of going independent. Under the same theme, an experimental exploration that breaks convention, cost no object. Blending cold brews of different roast levels widens the flavour span of the washed Ethiopian, while extending toward white flowers, citrus and woody essential oils. The layers keep shifting, like a variation that stuns the whole room.",
+'獨立化的呈現。象徵在同一個主題下，進行不計成本、打破常規的實驗性探索。混合不同焙度的冷萃，讓衣索比亞水洗的風味跨度更寬，同時往白花、柑橘、木質精油等方向延伸搭配。風味層次富有變化，就像一首能驚艷四座的變奏曲。':"The independent serve. Under the same theme, an experimental exploration that breaks convention, cost no object. Blending cold brews of different roast levels widens the flavour span of the washed Ethiopian, while extending toward white flowers, citrus and woody essential oils. The layers keep shifting, like a variation that stuns the whole room.",
 '淺焙＋中深焙 衣索比亞水洗冷萃':"Light + medium-dark roast washed Ethiopian cold brew",'Chardonnay 脫醇白葡萄酒':"Chardonnay de-alcoholised white wine",'綠豆蔻、洋甘菊糖水、檜木、橄欖油':"Green cardamom, chamomile syrup, hinoki, olive oil",
 '菊花':"Chrysanthemum",'枸杞':"Goji",'檸檬':"Lemon",
 '菊花與枸杞象徵著的寧靜、美好的歲月':"Chrysanthemum and goji, symbols of calm and golden days",
@@ -238,7 +238,7 @@ const SUN='<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 
 const MOON='<svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
 function paintTheme(){const dark=H.dataset.theme==='dark';const b=document.getElementById('themeBtn');if(!b)return;
   b.innerHTML=dark?SUN:MOON;b.setAttribute('aria-label',lang==='en'?(dark?'Switch to light theme':'Switch to dark theme'):(dark?'切換為淺色':'切換為深色'));
-  const m=document.querySelector('meta[name="theme-color"]');if(m)m.content=dark?'#17140F':'#FCFAF6'}
+  const m=document.querySelector('meta[name="theme-color"]');if(m)m.content=dark?'#1D1E17':'#FAF7F0'}
 addEventListener('DOMContentLoaded',()=>{
   const lb=document.getElementById('langBtn');if(lb){lb.textContent=lang==='en'?'中':'EN';lb.setAttribute('aria-label',lang==='en'?'切換為中文':'Switch to English');
     lb.onclick=()=>{try{localStorage.setItem('motif-lang',lang==='en'?'zh':'en')}catch(e){}location.reload()}}
