@@ -211,8 +211,9 @@ const SYMPHONIES=[
         note:{zh:'二次油炸的酥脆外皮，裹上甜辣洋釀醬。開場的第一個和弦。',en:'Double-fried for crunch, glazed in sweet-spicy yangnyeom. The opening chord.'},
         tags:[{zh:'甜辣',en:'Sweet & spicy'},{zh:'酥脆',en:'Crispy'},{zh:'手拿',en:'Finger food'}] },
       { name:{zh:'韓式烤牛小排 生菜包',en:'Korean BBQ Short Ribs with Lettuce Wraps'},
-        note:{zh:'醬醃牛小排烤到邊緣焦香，用生菜包起來，一口一個。',en:'Marinated galbi grilled to charred edges, wrapped in lettuce. One bite each.'},
-        tags:[{zh:'炭烤',en:'Grilled'},{zh:'生菜包',en:'Lettuce wrap'}] } ]},
+        note:{zh:'烤肉醬醃過的牛小排雙面烤到焦香，包進冰鎮蘿蔓、添一點泡菜，一口一個。',en:'Short rib marinated in Korean BBQ sauce, grilled on both sides, wrapped in ice-crisp romaine with a little kimchi. One bite each.'},
+        tags:[{zh:'燒烤',en:'Grilled'},{zh:'生菜包',en:'Lettuce wrap'},{zh:'佐泡菜',en:'With kimchi'}],
+        img:"img/korean-short-rib-wraps.jpg", pos:"94% 53%" } ]},
     { no:'II', c:'#D9929A', mv:{zh:'第二樂章',en:'Second Movement'}, course:{zh:'主菜',en:'Entrée'}, dishes:[
       { name:{zh:'玫瑰醬雞肉義大利麵',en:'Rosé Chicken Pasta'},
         note:{zh:'韓式玫瑰醬：鮮奶油與辣椒醬的溫柔碰撞。主旋律，慢慢展開。',en:'Korean rosé sauce: cream meets gochujang. The main theme, taken slowly.'},
@@ -320,7 +321,7 @@ function wrong(){
 
 /* ---------- the programme ---------- */
 const dish=d=>`<li class="dish${d.tbd?' tbd':''}">
-  ${d.img?`<img src="${esc(d.img)}" alt="">`:'<i class="ph"></i>'}
+  ${d.img?`<img src="${esc(d.img)}" alt=""${d.pos?` style="object-position:${esc(d.pos)}"`:''}>`:'<i class="ph"></i>'}
   <div><b>${esc(T(d.name))}</b><span class="en">${esc(d.name[other])}</span>
     ${d.note?`<p class="one">${esc(T(d.note))}</p>`:''}
     ${d.tags&&d.tags.length?`<div class="tags">${d.tags.map(t=>`<span class="tag${t.lim?' lim':''}">${esc(T(t))}</span>`).join('')}</div>`:''}
