@@ -238,7 +238,7 @@ const SUN='<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 
 const MOON='<svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
 function paintTheme(){const dark=H.dataset.theme==='dark';const b=document.getElementById('themeBtn');if(!b)return;
   b.innerHTML=dark?SUN:MOON;b.setAttribute('aria-label',lang==='en'?(dark?'Switch to light theme':'Switch to dark theme'):(dark?'切換為淺色':'切換為深色'));
-  const m=document.querySelector('meta[name="theme-color"]');if(m)m.content=dark?'#17140F':'#FCFAF6'}
+  const m=document.querySelector('meta[name="theme-color"]');if(m)m.content=dark?'#1D1E17':'#FAF7F0'}
 addEventListener('DOMContentLoaded',()=>{
   const lb=document.getElementById('langBtn');if(lb){lb.textContent=lang==='en'?'中':'EN';lb.setAttribute('aria-label',lang==='en'?'切換為中文':'Switch to English');
     lb.onclick=()=>{try{localStorage.setItem('motif-lang',lang==='en'?'zh':'en')}catch(e){}location.reload()}}

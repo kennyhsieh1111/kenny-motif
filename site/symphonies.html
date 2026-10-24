@@ -5,21 +5,22 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>肯尼計畫《交響曲》｜Symphonies</title>
 <meta name="description" content="肯尼計畫《交響曲》：為了迎接賓客而譜寫的全餐菜單，從序曲到終章。">
-<meta name="theme-color" content="#FCFAF6">
+<meta name="theme-color" content="#FAF7F0">
 <script src="i18n.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap">
 <style>
 /* Symphonies: a standalone page in the MOTIF look. Tokens, top bar and footer are copied from index.html;
    the programme layout is this page's own. ponytail: copied CSS instead of extracting a shared stylesheet. */
 :root{
   color-scheme:light;
-  --bg:#FCFAF6; --bg-2:#F4EFE6; --card:rgba(255,255,255,.6); --ink:#211F1C; --ink-2:#58524A; --ink-3:#8A8378;
-  --line:#E6DFD3; --accent:#B0660F; --accent-bg:#F9E7C6; --accent-ink:#5E3A08;
-  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
-  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
-  --latin:"Jost","Futura","Avenir Next",system-ui,sans-serif;
+  --bg:#FAF7F0; --bg-2:#F3EFE7; --card:#FFFFFF; --ink:#33352B; --ink-2:#54503F; --ink-3:#8A8070;
+  --line:#ECE5D6; --accent:#4A5B3A; --accent-bg:#F1F3EA; --accent-ink:#3B4A31;
+  --serif:"Bricolage Grotesque","Noto Sans TC","PingFang TC",system-ui,sans-serif; /* display slot, kept as --serif to avoid renaming 20 call sites */
+  --sans:"Hanken Grotesk","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --latin:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"Spline Sans Mono",ui-monospace,monospace;
   --gutter:18px; --maxw:720px;
 }
 *{box-sizing:border-box}
@@ -33,14 +34,14 @@ a{color:inherit}
 main{overflow:hidden;overflow:clip}
 
 /* top bar */
-.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(252,250,246,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(250,247,240,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .bar .wrap{display:flex;align-items:center;gap:10px;height:56px}
 .brand{display:flex;align-items:center;gap:8px;min-width:0;text-decoration:none}
 .brand span{font-family:var(--serif);font-weight:700;font-size:15px;letter-spacing:.18em;white-space:nowrap}
 .tabs{margin-left:auto;display:flex;gap:2px;background:var(--bg-2);border-radius:999px;padding:3px;min-width:0;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
 .tab{padding:5px 13px;border-radius:999px;font-size:14px;font-weight:500;color:var(--ink-2);white-space:nowrap;text-decoration:none}
-.tab[aria-current="page"]{background:var(--ink);color:var(--bg)}
+.tab[aria-current="page"]{background:var(--accent);color:var(--bg)}
 .logo{display:inline-block;background:currentColor;-webkit-mask:var(--src) center/contain no-repeat;mask:var(--src) center/contain no-repeat}
 .ctl{display:flex;gap:6px;flex:none}
 .ctl button{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;font-family:var(--latin);font-size:12px;font-weight:500;color:var(--ink-2);transition:background .2s,color .2s,transform .2s}
@@ -59,7 +60,7 @@ main{overflow:hidden;overflow:clip}
 @keyframes spin{to{transform:rotate(360deg)}}
 .hero{padding-block:118px 34px;position:relative;z-index:1}
 .h1{margin:0;font:inherit}
-.title .t1{display:block;font-family:var(--serif);font-weight:900;font-size:clamp(34px,10vw,50px);letter-spacing:.3em;line-height:1.15;text-shadow:0 0 18px rgba(252,250,246,.9)}
+.title .t1{display:block;font-family:var(--serif);font-weight:700;font-size:clamp(34px,10vw,50px);letter-spacing:.12em;line-height:1.15;text-shadow:0 0 18px rgba(250,247,240,.9)}
 .title .t2{display:block;font-family:var(--serif);font-weight:700;font-size:clamp(17px,4.8vw,22px);letter-spacing:.24em;color:var(--ink-2);margin-top:8px}
 .title .t2 em{font-style:normal;font-family:var(--latin);font-weight:400;letter-spacing:.18em;font-size:.86em}
 html[lang="en"] .title .t1{letter-spacing:.06em;font-size:clamp(30px,8.4vw,46px)}
@@ -72,16 +73,16 @@ html[lang="en"] .brand span{letter-spacing:.04em}
 /* sections */
 .sec{padding-block:30px 6px}
 .eyebrow{font-family:var(--latin);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
-.display{font-family:var(--serif);font-weight:900;font-size:clamp(23px,6.4vw,30px);line-height:1.4;margin:4px 0 6px;text-wrap:balance}
+.display{font-family:var(--serif);font-weight:700;font-size:clamp(23px,6.4vw,30px);line-height:1.4;margin:4px 0 6px;text-wrap:balance}
 .sec-h{display:block;margin:0 0 6px}
-.sec-h h2{font-family:var(--serif);font-size:24px;font-weight:900;margin:0}
+.sec-h h2{font-family:var(--serif);font-size:24px;font-weight:700;margin:0}
 .sec-h .latin{display:block;font-size:12px;letter-spacing:.22em;color:var(--ink-3);text-transform:uppercase;margin-bottom:2px}
 .sec-lead{color:var(--ink-2);font-size:14.5px;margin:0 0 14px}
 
 /* programme: one movement per course */
 .prog{list-style:none;margin:0;padding:0;display:grid;gap:26px}
 .mov-h{display:flex;align-items:center;gap:12px;margin:0 0 10px}
-.mov-h .no{font-family:var(--serif);font-weight:900;font-size:30px;line-height:1;color:var(--mc);min-width:34px}
+.mov-h .no{font-family:var(--serif);font-weight:700;font-size:30px;line-height:1;color:var(--mc);min-width:34px}
 .mov-h .mv{font-family:var(--serif);font-weight:700;font-size:17px;line-height:1.25}
 .mov-h .mv .latin{display:block;font-size:11.5px;color:var(--ink-3);text-transform:uppercase;font-weight:400;letter-spacing:.18em}
 .mov-h .rule{flex:1;height:1px;background:var(--line)}
@@ -152,15 +153,15 @@ html[lang="en"] .brand span{letter-spacing:.04em}
 
 /* dark theme (same tokens as index.html) */
 html[data-theme="dark"]{color-scheme:dark;
-  --bg:#17140F; --bg-2:#221E18; --card:rgba(255,255,255,.05); --ink:#EFE8DC; --ink-2:#BEB4A5; --ink-3:#8C8375;
-  --line:#332D26; --accent:#E3A64E; --accent-bg:#3B2B13; --accent-ink:#F6DCA8}
-html[data-theme="dark"] .bar{background:rgba(23,20,15,.86)}
-html[data-theme="dark"] .title .t1{text-shadow:0 0 18px rgba(23,20,15,.9)}
+  --bg:#1D1E17; --bg-2:#21221A; --card:#26271F; --ink:#F3EFE7; --ink-2:#CFC9BA; --ink-3:#968D7B;
+  --line:#32332A; --accent:#889670; --accent-bg:#262C1E; --accent-ink:#C6CFB1}
+html[data-theme="dark"] .bar{background:rgba(29,30,23,.86)}
+html[data-theme="dark"] .title .t1{text-shadow:0 0 18px rgba(29,30,23,.9)}
 html[data-theme="dark"] .one{color:var(--ink-3)}
-html[data-theme="dark"] .ph{background:conic-gradient(from 30deg,var(--mc) 0 28%,#2A2520 28% 40%,var(--mc) 40% 62%,#332D26 62% 100%)}
-html[data-theme="dark"] .share{background:rgba(34,30,24,.92)}
+html[data-theme="dark"] .ph{background:conic-gradient(from 30deg,var(--mc) 0 28%,#26271F 28% 40%,var(--mc) 40% 62%,#32332A 62% 100%)}
+html[data-theme="dark"] .share{background:rgba(38,39,31,.92)}
 html[data-theme="dark"] .rose i{mix-blend-mode:screen;opacity:.3}
-html[data-theme="dark"] .illo rect{fill:#2E2821;stroke:#4A4237}
+html[data-theme="dark"] .illo rect{fill:#26271F;stroke:#3E3F34}
 </style>
 </head>
 <body>
