@@ -14,9 +14,8 @@ H.lang=lang==='en'?'en':'zh-Hant-TW';H.dataset.theme=theme;
 
 const EN={
 /* ---- chrome / static ---- */
-'肯尼計畫《動機 MOTIF》feat. 阿問｜AD Cafe':"Kenny Project “MOTIF” feat. A-Wen｜AD Cafe",
 '肯尼計畫':"Kenny Project",'菜單':"Menu",'後援品牌':"Partners",'契機':"Story",'交響曲':"Symphonies",
-'AD Cafe 官網首頁':"AD Cafe home",'AD Cafe 官網':"AD Cafe website",'回到菜單':"Back to menu",'頁面分頁':"Page tabs",
+'回到菜單':"Back to menu",'頁面分頁':"Page tabs",
 '《動機':"“",'》':"”",'活動契機 ›':"Why this event ›",
 '｜2026 WCIGS 世界咖啡烈酒大賽亞軍':"｜Runner-up, 2026 World Coffee in Good Spirits",
 '2026 WCIGS 世界咖啡烈酒大賽亞軍':"Runner-up, 2026 World Coffee in Good Spirits Championship",
@@ -46,8 +45,8 @@ const EN={
 '今年帶著木木一同在世界舞台上奪得佳績，他重新演繹台灣經典的風味意象：珍珠多多綠、鳳梨酥，甚至是小籠包。這是他拿下世界亞軍後，第一次在台灣北中南巡迴客座。':"This year, with Mumu alongside, he placed on the world stage by reinterpreting classic Taiwanese flavour images: pearl yogurt green tea, pineapple cake, even xiaolongbao. This is his first guest tour across Taiwan since becoming world runner-up.",
 '謝謝你，來多貪一杯':"Thank you for coming for one more cup",
 '每一杯背後，都有一個想被理解的瞬間。如果今天有哪一口讓你若有所思，歡迎把那個瞬間留下來，也可以標記我們。每一則分享我們都會認真閱讀回覆，這場活動中合力的每一位夥伴也同樣期待與你交流。':"Behind every cup is a moment waiting to be understood. If a sip today gave you pause, feel free to capture that moment and tag us. We read and reply to every post, and every partner in this event is just as eager to hear from you.",
-'複製所有標記':"Copy all tags",'回 AD Cafe 官網首頁 ›':"Back to AD Cafe ›",
-'AD Cafe 主辦｜肯尼計畫《動機 MOTIF》feat. 阿問':"Hosted by AD Cafe｜Kenny Project “MOTIF” feat. A-Wen",
+'複製所有標記':"Copy all tags",
+'肯尼計畫《動機 MOTIF》feat. 阿問':"Kenny Project “MOTIF” feat. A-Wen",
 '飲品照片為示意圖，實際出杯以現場為準。':"Drink photos are for illustration; actual serves may vary.",
 '上一項':"Previous",'下一項':"Next",'關閉':"Close",
 /* ---- labels written by the render code ---- */
