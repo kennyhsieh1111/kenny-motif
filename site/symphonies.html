@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>肯尼計畫《交響曲》｜Symphonies</title>
+<meta name="description" content="肯尼計畫《交響曲》：為了迎接賓客而譜寫的全餐菜單，從序曲到終章。">
+<meta name="theme-color" content="#FCFAF6">
+<script src="i18n.js"></script>
+<link rel="icon" href="logo/adcafe.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap">
+<style>
+/* Symphonies: a standalone page in the MOTIF look. Tokens, top bar and footer are copied from index.html;
+   the programme layout is this page's own. ponytail: copied CSS instead of extracting a shared stylesheet. */
+:root{
+  color-scheme:light;
+  --bg:#FCFAF6; --bg-2:#F4EFE6; --card:rgba(255,255,255,.6); --ink:#211F1C; --ink-2:#58524A; --ink-3:#8A8378;
+  --line:#E6DFD3; --accent:#B0660F; --accent-bg:#F9E7C6; --accent-ink:#5E3A08;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --latin:"Jost","Futura","Avenir Next",system-ui,sans-serif;
+  --gutter:18px; --maxw:720px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;margin:0}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter);position:relative}
+.latin{font-family:var(--latin);letter-spacing:.06em}
+main{overflow:hidden;overflow:clip}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(252,250,246,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:10px;height:56px}
+.brand{display:flex;align-items:center;gap:8px;min-width:0;text-decoration:none}
+.home{display:flex;align-items:center;flex:none;padding:6px 2px}
+.home .logo{width:34px;height:26px}
+.brand span{font-family:var(--serif);font-weight:700;font-size:15px;letter-spacing:.18em;white-space:nowrap}
+.tabs{margin-left:auto;display:flex;gap:2px;background:var(--bg-2);border-radius:999px;padding:3px;min-width:0;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:5px 13px;border-radius:999px;font-size:14px;font-weight:500;color:var(--ink-2);white-space:nowrap;text-decoration:none}
+.tab[aria-current="page"]{background:var(--ink);color:var(--bg)}
+.logo{display:inline-block;background:currentColor;-webkit-mask:var(--src) center/contain no-repeat;mask:var(--src) center/contain no-repeat}
+.ctl{display:flex;gap:6px;flex:none}
+.ctl button{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;font-family:var(--latin);font-size:12px;font-weight:500;color:var(--ink-2);transition:background .2s,color .2s,transform .2s}
+.ctl button:hover{background:var(--bg-2);color:var(--ink)}
+.ctl button:active{transform:scale(.92)}
+.ctl svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* hero: the menu's polar rose, redrawn with conic gradients (no canvas, no script) */
+.hero-box{position:relative}
+.rose{position:absolute;width:640px;height:640px;left:calc(86% - 320px);top:-180px;pointer-events:none;isolation:isolate;z-index:0;color:var(--ink-2)}
+.rose i{position:absolute;inset:0;border-radius:50%;mix-blend-mode:multiply;-webkit-mask:radial-gradient(circle,#000 48%,transparent 72%);mask:radial-gradient(circle,#000 48%,transparent 72%);animation:spin var(--t) linear infinite}
+.rose .a{--t:160s;opacity:.85;background:conic-gradient(from 20deg,#EFE3A0 0 7%,transparent 7% 13%,#F2C79B 13% 25%,transparent 25% 30%,#DAC7E0 30% 39%,transparent 39% 46%,#C8DBE6 46% 55%,transparent 55% 61%,#D2E0CF 61% 71%,transparent 71% 78%,#EAC2C6 78% 89%,transparent 89%)}
+.rose .b{--t:220s;opacity:.7;inset:14%;animation-direction:reverse;background:conic-gradient(from 200deg,#D8B25E 0 6%,transparent 6% 19%,#B89BC0 19% 27%,transparent 27% 43%,#86A9BF 43% 49%,transparent 49% 64%,#D9929A 64% 73%,transparent 73%)}
+.rose .c{--t:120s;opacity:.9;inset:-22%;-webkit-mask:radial-gradient(circle,#000 30%,transparent 70%);mask:radial-gradient(circle,#000 30%,transparent 70%);background:conic-gradient(from 0deg,#EE9A38 0 1.1%,transparent 1.1% 29%,#3F6B4A 29% 29.8%,transparent 29.8% 57%,#E3B23C 57% 58.3%,transparent 58.3% 79%,#7E9EC4 79% 79.8%,transparent 79.8%)}
+.rose svg{position:absolute;left:50%;top:50%;width:128px;height:128px;margin:-64px;overflow:visible}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero{padding-block:118px 34px;position:relative;z-index:1}
+.h1{margin:0;font:inherit}
+.title .t1{display:block;font-family:var(--serif);font-weight:900;font-size:clamp(34px,10vw,50px);letter-spacing:.3em;line-height:1.15;text-shadow:0 0 18px rgba(252,250,246,.9)}
+.title .t2{display:block;font-family:var(--serif);font-weight:700;font-size:clamp(17px,4.8vw,22px);letter-spacing:.24em;color:var(--ink-2);margin-top:8px}
+.title .t2 em{font-style:normal;font-family:var(--latin);font-weight:400;letter-spacing:.18em;font-size:.86em}
+html[lang="en"] .title .t1{letter-spacing:.06em;font-size:clamp(30px,8.4vw,46px)}
+html[lang="en"] .brand span{letter-spacing:.04em}
+.feat{font-size:15px;color:var(--ink-2);margin:12px 0 14px;line-height:1.6}
+.feat .by{display:block;font-size:13px;color:var(--ink-3);margin-top:2px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.pill{font-size:13px;padding:3px 11px;border-radius:999px;background:var(--accent-bg);color:var(--accent-ink);font-weight:500}
+
+/* sections */
+.sec{padding-block:30px 6px}
+.eyebrow{font-family:var(--latin);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
+.display{font-family:var(--serif);font-weight:900;font-size:clamp(23px,6.4vw,30px);line-height:1.4;margin:4px 0 6px;text-wrap:balance}
+.sec-h{display:block;margin:0 0 6px}
+.sec-h h2{font-family:var(--serif);font-size:24px;font-weight:900;margin:0}
+.sec-h .latin{display:block;font-size:12px;letter-spacing:.22em;color:var(--ink-3);text-transform:uppercase;margin-bottom:2px}
+.sec-lead{color:var(--ink-2);font-size:14.5px;margin:0 0 14px}
+
+/* programme: one movement per course */
+.prog{list-style:none;margin:0;padding:0;display:grid;gap:26px}
+.mov-h{display:flex;align-items:center;gap:12px;margin:0 0 10px}
+.mov-h .no{font-family:var(--serif);font-weight:900;font-size:30px;line-height:1;color:var(--mc);min-width:34px}
+.mov-h .mv{font-family:var(--serif);font-weight:700;font-size:17px;line-height:1.25}
+.mov-h .mv .latin{display:block;font-size:11.5px;color:var(--ink-3);text-transform:uppercase;font-weight:400;letter-spacing:.18em}
+.mov-h .rule{flex:1;height:1px;background:var(--line)}
+.mov-h .course{font-size:12.5px;padding:3px 11px;border-radius:999px;background:var(--accent-bg);color:var(--accent-ink);font-weight:500;white-space:nowrap}
+.dishes{display:grid;gap:10px;list-style:none;margin:0;padding:0}
+.dish{display:grid;grid-template-columns:72px 1fr;gap:14px;align-items:center;padding:10px;border-radius:16px;background:var(--card);border:1px solid var(--line);position:relative}
+.dish::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;border-radius:0 3px 3px 0;background:var(--mc)}
+.dish img,.ph{width:72px;height:72px;object-fit:cover;border-radius:12px;display:block}
+.ph{background:conic-gradient(from 30deg,var(--mc) 0 28%,#EFE6D8 28% 40%,var(--mc) 40% 62%,#E9DFCF 62% 100%);position:relative}
+.ph::after{content:"";position:absolute;inset:26%;border-radius:50%;background:var(--card)}
+.dish b,.amb-card b{font-family:var(--serif);font-size:18px;font-weight:700;line-height:1.3;display:block}
+.en{font-family:var(--latin);font-size:12px;letter-spacing:.08em;color:var(--ink-3);display:block}
+.one{font-size:13px;color:#7D766B;line-height:1.55;margin:4px 0 0}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+.tag{font-size:11.5px;padding:1px 8px;border-radius:999px;border:1px solid var(--line);color:var(--ink-2);white-space:nowrap;background:var(--card)}
+.tag.lim{border-color:transparent;background:var(--accent-bg);color:var(--accent-ink);font-weight:500}
+.dish.tbd{border-style:dashed;background:transparent}
+.dish.tbd b{color:var(--ink-3)}
+.dish.tbd .ph{opacity:.45}
+
+/* ambience: music and scent */
+.amb{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.amb-card{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:14px 16px}
+.amb-card b{margin-top:4px}
+.gobtn{display:inline-block;margin-top:8px;font-size:14px;font-weight:600;color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+
+/* landing: one card per concert */
+.shows{display:grid;gap:10px}
+.show{display:grid;grid-template-columns:56px 1fr auto;gap:14px;align-items:center;padding:12px 14px 12px 12px;border-radius:16px;background:var(--card);border:1px solid var(--line);text-decoration:none;transition:transform .15s,border-color .15s}
+.show:hover{border-color:var(--ink)}
+.show:active{transform:scale(.99)}
+.show .cal{display:grid;place-items:center;align-content:center;width:56px;height:56px;border-radius:12px;background:var(--accent-bg);color:var(--accent-ink);font-family:var(--latin);line-height:1}
+.show .cal b{font-size:22px;font-weight:500;font-variant-numeric:tabular-nums}
+.show .cal small{font-size:10px;letter-spacing:.18em;margin-top:3px}
+.show .info b{font-family:var(--serif);font-size:18px;font-weight:700;line-height:1.3;display:block}
+.show .meta{display:block;font-size:12.5px;color:var(--ink-3);margin-top:4px}
+.show .chev{color:var(--ink-3);font-size:22px}
+
+/* admission gate */
+.gate{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:6px}
+.code{font-family:var(--latin);font-size:26px;letter-spacing:.35em;text-align:center;width:100%;max-width:300px;padding:10px 0 10px .35em;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font-variant-numeric:tabular-nums}
+.code::placeholder{color:var(--ink-3)}
+.enter{display:inline-flex;align-items:center;padding:11px 18px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:500;font-size:14px}
+.linkbtn{display:inline-block;margin-top:18px;font-size:13.5px;font-weight:500;color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* wrong concert */
+.wrong{text-align:center;padding-top:16px}
+.wrong .illo{width:min(100%,300px);height:auto;display:block;margin:0 auto 4px}
+.wrong .sec-lead{margin-inline:auto;max-width:420px}
+.wrong .linkbtn{display:block;margin-top:16px}
+
+/* footer */
+.share{margin-top:40px;padding-block:30px 44px;border-top:1px solid var(--line);background:rgba(244,239,230,.92)}
+.share h2{font-family:var(--serif);font-size:21px;margin:0}
+.share .note{font-size:15px;color:var(--ink-2);line-height:1.85;margin:10px 0 0}
+.homelink{display:inline-block;margin-top:22px;font-size:14px;font-weight:500;color:var(--accent);text-underline-offset:3px}
+.fine{font-size:12px;color:var(--ink-3);margin-top:22px;line-height:1.7}
+@media (max-width:640px){ .brand span{display:none} .tab{padding:5px 9px;font-size:13px} }
+/* phones: four tabs no longer fit beside the logo and controls, so they take a second row as a full-width segmented control */
+@media (max-width:480px){
+  .bar .wrap{flex-wrap:wrap;height:auto;padding-block:9px 8px;row-gap:6px}
+  .brand span{display:inline}
+  .tabs{order:1;flex:1 0 100%;margin-left:0} .ctl{margin-left:auto}
+  .tab{flex:1;text-align:center;padding:5px 4px}
+}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* dark theme (same tokens as index.html) */
+html[data-theme="dark"]{color-scheme:dark;
+  --bg:#17140F; --bg-2:#221E18; --card:rgba(255,255,255,.05); --ink:#EFE8DC; --ink-2:#BEB4A5; --ink-3:#8C8375;
+  --line:#332D26; --accent:#E3A64E; --accent-bg:#3B2B13; --accent-ink:#F6DCA8}
+html[data-theme="dark"] .bar{background:rgba(23,20,15,.86)}
+html[data-theme="dark"] .title .t1{text-shadow:0 0 18px rgba(23,20,15,.9)}
+html[data-theme="dark"] .one{color:var(--ink-3)}
+html[data-theme="dark"] .ph{background:conic-gradient(from 30deg,var(--mc) 0 28%,#2A2520 28% 40%,var(--mc) 40% 62%,#332D26 62% 100%)}
+html[data-theme="dark"] .share{background:rgba(34,30,24,.92)}
+html[data-theme="dark"] .rose i{mix-blend-mode:screen;opacity:.3}
+html[data-theme="dark"] .illo rect{fill:#2E2821;stroke:#4A4237}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="home" href="https://adcafe.com.tw/" aria-label="AD Cafe 官網首頁" title="AD Cafe 官網"><i class="logo" style="--src:url(logo/adcafe.png)"></i></a>
+    <a class="brand" href="index.html" aria-label="回到菜單"><span>肯尼計畫</span></a>
+    <nav class="tabs" aria-label="頁面分頁">
+      <a class="tab" href="index.html">菜單</a>
+      <a class="tab" href="index.html#partners">後援品牌</a>
+      <a class="tab" href="index.html#story">契機</a>
+      <a class="tab" href="symphonies.html" aria-current="page">交響曲</a>
+    </nav>
+    <div class="ctl"><button id="langBtn" type="button">EN</button><button id="themeBtn" type="button"></button></div>
+  </div>
+</header>
+
+<main>
+  <div class="hero-box">
+    <div class="rose" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i>
+      <svg viewBox="-64 -64 128 128"><circle r="64" fill="var(--bg)" fill-opacity=".94"/><defs><path id="hubArc" d="M-52 0A52 52 0 0 1 52 0"/></defs>
+        <text font-family="Jost,Futura,sans-serif" font-size="11" letter-spacing="1.4" fill="currentColor"><textPath href="#hubArc" startOffset="50%" text-anchor="middle">What's your SYMPHONY?</textPath></text></svg>
+    </div>
+    <div class="hero wrap" id="hero"></div>
+  </div>
+  <div class="wrap" id="body"></div>
+</main>
+
+<footer class="share"><div class="wrap" id="foot"></div></footer>
+
+<script>
+(function(){
+/* ---------- template data: one object per symphony; every text is {zh,en} ----------
+   ponytail: the entry code sits in plain text here, so anyone reading the source can find it.
+   It steers guests to the right concert; it is not a secret. Hash it if that ever matters. */
+const SYMPHONIES=[
+{ id:'korean', no:1, date:'2026-11-11', code:'20261111',
+  name:{zh:'11/11 韓式交響曲',en:'Nov 11th Korean Symphony'},
+  lead:{zh:'為了迎接你，我譜了一套晚餐。',en:'A dinner, composed to welcome you.'},
+  host:{zh:'編曲與掌廚：肯尼',en:'Composed & cooked by Kenny'},
+  pills:[{zh:'一套全餐',en:'Full course'},{zh:'三個樂章・一段伴奏',en:'Three movements · one accompaniment'},{zh:'歌單與香氣',en:'Playlist & scent'}],
+  movements:[
+    { no:'I', c:'#B5534A', mv:{zh:'序曲',en:'Overture'}, course:{zh:'開胃菜',en:'Appetizer'}, dishes:[
+      { name:{zh:'韓式炸雞 佐洋釀醬',en:'Korean Fried Chicken with Yangnyeom Sauce'},
+        note:{zh:'二次油炸的酥脆外皮，裹上甜辣洋釀醬。開場的第一個和弦。',en:'Double-fried for crunch, glazed in sweet-spicy yangnyeom. The opening chord.'},
+        tags:[{zh:'甜辣',en:'Sweet & spicy'},{zh:'酥脆',en:'Crispy'},{zh:'手拿',en:'Finger food'}] },
+      { name:{zh:'韓式烤牛小排 生菜包',en:'Korean BBQ Short Ribs with Lettuce Wraps'},
+        note:{zh:'醬醃牛小排烤到邊緣焦香，用生菜包起來，一口一個。',en:'Marinated galbi grilled to charred edges, wrapped in lettuce. One bite each.'},
+        tags:[{zh:'炭烤',en:'Grilled'},{zh:'生菜包',en:'Lettuce wrap'}] } ]},
+    { no:'II', c:'#D9929A', mv:{zh:'第二樂章',en:'Second Movement'}, course:{zh:'主菜',en:'Entrée'}, dishes:[
+      { name:{zh:'玫瑰醬雞肉義大利麵',en:'Rosé Chicken Pasta'},
+        note:{zh:'韓式玫瑰醬：鮮奶油與辣椒醬的溫柔碰撞。主旋律，慢慢展開。',en:'Korean rosé sauce: cream meets gochujang. The main theme, taken slowly.'},
+        tags:[{zh:'微辣',en:'Mild heat'},{zh:'奶香',en:'Creamy'}] } ]},
+    { no:'III', c:'#CFC5B5', mv:{zh:'終章',en:'Finale'}, course:{zh:'甜點',en:'Dessert'}, dishes:[
+      { tbd:true, name:{zh:'待定',en:'To be announced'},
+        note:{zh:'終章還在譜寫中。',en:'The finale is still being written.'},
+        tags:[{zh:'即將揭曉',en:'Coming soon',lim:true}] } ]},
+    { no:'♪', c:'#E3B23C', mv:{zh:'伴奏',en:'Accompaniment'}, course:{zh:'飲品',en:'Beverage'}, dishes:[
+      { name:{zh:'柚子氣泡美式',en:'Yuzu Sparkling Americano'},
+        note:{zh:'濃縮咖啡、柚子、氣泡水。清爽的低音，貫穿每一道菜。',en:'Espresso, yuzu, soda. A bright bass line running under every course.'},
+        tags:[{zh:'無酒精',en:'Alcohol-free'},{zh:'冰飲',en:'Iced'}] } ]}
+  ],
+  ambience:[
+    { k:'Music', name:{zh:'韓流歌單',en:'Korean playlist'},
+      note:{zh:'今晚的節奏交給歌單：從開胃的輕快，到甜點的慢板。',en:'The playlist keeps time tonight, from an upbeat opener to a slow dessert.'},
+      url:'', cta:{zh:'開啟歌單',en:'Open the playlist'} },
+    { k:'Scent', name:{zh:'hetras 水仙花',en:'hetras Soosunhwa'},
+      note:{zh:'入席前先點上。水仙清淡的甜香，替空間定調。',en:'Lit before you sit down. Narcissus, soft and sweet, sets the key of the room.'} }
+  ]
+}
+];
+
+/* ---------- helpers ---------- */
+const lang=(window.MOTIF_I18N&&MOTIF_I18N.lang)||'zh',other=lang==='en'?'zh':'en';
+const T=x=>x[lang]||x.zh, L=(zh,en)=>lang==='en'?en:zh;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const $=s=>document.querySelector(s);
+const store={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+const unlocked=s=>store.get('symph-'+s.id)==='1';
+const want=new URLSearchParams(location.search).get('s');
+const S=SYMPHONIES.find(s=>s.id===want)||null;
+$('.tabs').scrollLeft=1e4; /* this tab is last in the row; keep it in view when the row has to scroll */
+
+/* ---------- hero: the landing talks about all concerts, a sub-page about one ---------- */
+function hero(s){
+  $('#hero').innerHTML=s?`
+    <div class="eyebrow">${L(`第 ${s.no} 號交響曲・全餐菜單`,`Symphony No. ${s.no} · Full-course menu`)}</div>
+    <h1 class="h1"><span class="title">
+      <span class="t1">${esc(T(s.name))}</span>
+      <span class="t2 en">${lang==='en'?esc(s.name.zh):`<em>${esc(s.name.en)}</em>`}</span>
+    </span></h1>
+    <p class="feat">${esc(T(s.lead))}<span class="by">${esc(T(s.host))}</span></p>
+    <ul class="pills">${s.pills.map(p=>`<li class="pill">${esc(T(p))}</li>`).join('')}</ul>`:`
+    <div class="eyebrow">${L('肯尼計畫・全餐系列','Kenny Project · Full-course series')}</div>
+    <h1 class="h1"><span class="title">
+      <span class="t1">${L('交響曲','Symphonies')}</span>
+      <span class="t2 en">${lang==='en'?'交響曲':'<em>Symphonies</em>'}</span>
+    </span></h1>
+    <p class="feat">${L('每一場，都是為一桌賓客譜寫的全餐。','Each concert is a full course, composed for one table.')}</p>
+    <ul class="pills"><li class="pill">${L('憑邀請密碼入場','By invitation code')}</li><li class="pill">${L('菜單・歌單・香氣','Menu · playlist · scent')}</li></ul>`;
+}
+
+/* ---------- landing: one card per concert ---------- */
+const show=s=>{const d=new Date(s.date+'T00:00:00');
+  return `<a class="show" href="?s=${esc(s.id)}">
+    <span class="cal"><b>${d.getDate()}</b><small>${d.toLocaleString('en',{month:'short'}).toUpperCase()}</small></span>
+    <span class="info"><b>${esc(T(s.name))}</b><span class="en">${esc(s.name[other])}</span>
+      <span class="meta">${unlocked(s)?L('已解鎖・點開看菜單','Unlocked · open the menu'):L('憑入場密碼','Code required')}</span></span>
+    <span class="chev">›</span></a>`};
+function landing(){
+  document.title=L('肯尼計畫《交響曲》｜Symphonies','Kenny Project “Symphonies”');
+  hero(null);
+  $('#body').innerHTML=`<div class="sec">
+    <div class="sec-h"><span class="latin">Concerts</span><h2>${L('演出場次','Concerts')}</h2></div>
+    <p class="sec-lead">${L('選擇你受邀的那一場，輸入邀請上的密碼。','Pick the concert you were invited to and enter the code on your invitation.')}</p>
+    <div class="shows">${SYMPHONIES.map(show).join('')}</div></div>`;
+}
+
+/* ---------- admission gate ---------- */
+function gate(){
+  $('#body').innerHTML=`<div class="sec">
+    <div class="eyebrow">Admission</div>
+    <h2 class="display">${L('輸入邀請上的入場密碼','Enter the code on your invitation')}</h2>
+    <p class="sec-lead">${L(`這場音樂會只為一桌賓客譜寫。密碼是 ${S.code.length} 碼數字。`,`This concert is composed for one table. The code is ${S.code.length} digits.`)}</p>
+    <form class="gate" id="gate">
+      <label class="sr" for="code">${L('入場密碼','Entry code')}</label>
+      <input class="code" id="code" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code" maxlength="${S.code.length}" placeholder="${'·'.repeat(S.code.length)}" required>
+      <button class="enter" type="submit">${L('入場','Enter the hall')}</button>
+    </form>
+    <a class="linkbtn" href="symphonies.html">${L('‹ 所有交響曲','‹ All symphonies')}</a></div>`;
+  $('#gate').onsubmit=e=>{e.preventDefault();
+    if($('#code').value.trim()===S.code){store.set('symph-'+S.id,'1');details();scrollTo(0,0)}else wrong()};
+  $('#code').focus();
+}
+const TICKET=`<svg class="illo" viewBox="0 0 280 170" aria-hidden="true">
+  <defs><mask id="tk"><rect width="280" height="170" fill="#fff"/><circle cx="46" cy="85" r="11" fill="#000"/><circle cx="234" cy="85" r="11" fill="#000"/></mask></defs>
+  <g transform="rotate(-7 140 85)">
+    <rect x="46" y="38" width="188" height="94" rx="12" fill="var(--bg-2)" stroke="var(--line)" mask="url(#tk)"/>
+    <line x1="172" y1="44" x2="172" y2="126" stroke="var(--ink-3)" stroke-dasharray="3 5" opacity=".6"/>
+    <text x="64" y="68" font-family="Jost,Futura,sans-serif" font-size="8.5" letter-spacing="2.2" fill="var(--ink-3)">KENNY PROJECT</text>
+    <text x="64" y="92" font-family="Noto Serif TC,serif" font-weight="900" font-size="14" textLength="96" lengthAdjust="spacingAndGlyphs" fill="var(--ink)">SYMPHONIES</text>
+    <text x="64" y="112" font-family="Jost,Futura,sans-serif" font-size="8.5" letter-spacing="2.2" fill="var(--ink-3)">ADMIT ONE</text>
+    <circle cx="203" cy="85" r="26" fill="none" stroke="#D6455A" stroke-width="2.5" opacity=".85"/>
+    <text x="203" y="97" text-anchor="middle" font-family="Noto Serif TC,serif" font-weight="900" font-size="34" fill="#D6455A">?</text>
+  </g></svg>`;
+function wrong(){
+  $('#body').innerHTML=`<div class="sec wrong">${TICKET}
+    <h2 class="display">${L('你走錯音樂廳了。',"You're entering the wrong concert.")}</h2>
+    <p class="sec-lead">${L('這組密碼打不開這座音樂廳。確認邀請上的密碼，再試一次。',"That code doesn't open this hall. Check your invitation and try again.")}</p>
+    <button class="enter" id="retry" type="button">${L('再試一次','Try again')}</button>
+    <a class="linkbtn" href="symphonies.html">${L('所有交響曲 ›','All symphonies ›')}</a></div>`;
+  $('#retry').onclick=gate;
+}
+
+/* ---------- the programme ---------- */
+const dish=d=>`<li class="dish${d.tbd?' tbd':''}">
+  ${d.img?`<img src="${esc(d.img)}" alt="">`:'<i class="ph"></i>'}
+  <div><b>${esc(T(d.name))}</b><span class="en">${esc(d.name[other])}</span>
+    ${d.note?`<p class="one">${esc(T(d.note))}</p>`:''}
+    ${d.tags&&d.tags.length?`<div class="tags">${d.tags.map(t=>`<span class="tag${t.lim?' lim':''}">${esc(T(t))}</span>`).join('')}</div>`:''}
+  </div></li>`;
+const mov=m=>`<li class="mov" style="--mc:${m.c}">
+  <div class="mov-h"><span class="no">${esc(m.no)}</span><span class="mv">${esc(T(m.mv))}<span class="latin">${esc(m.mv[other])}</span></span><span class="rule"></span><span class="course">${esc(T(m.course))}</span></div>
+  <ul class="dishes">${m.dishes.map(dish).join('')}</ul></li>`;
+const amb=a=>`<div class="amb-card"><div class="eyebrow">${esc(a.k)}</div><b>${esc(T(a.name))}</b><span class="en">${esc(a.name[other])}</span>
+  ${a.note?`<p class="one">${esc(T(a.note))}</p>`:''}
+  ${a.url?`<a class="gobtn" href="${esc(a.url)}" target="_blank" rel="noopener">${esc(T(a.cta))} ›</a>`:''}</div>`;
+function details(){
+  $('#body').innerHTML=`
+    <div class="sec">
+      <div class="eyebrow">Programme</div>
+      <h2 class="display">${L('今晚的曲目',"Tonight's programme")}</h2>
+      <p class="sec-lead">${L('依上菜順序排列，從序曲到終章。','In order of service, from overture to finale.')}</p>
+      <ol class="prog">${S.movements.map(mov).join('')}</ol>
+    </div>
+    <div class="sec">
+      <div class="sec-h"><span class="latin">Ambience</span><h2>${L('氛圍','Ambience')}</h2></div>
+      <p class="sec-lead">${L('盤子以外，填滿空間的東西。','What fills the room between the plates.')}</p>
+      <div class="amb">${S.ambience.map(amb).join('')}</div>
+    </div>`;
+}
+
+/* ---------- route ---------- */
+if(S){document.title=L('肯尼計畫《交響曲》｜','Kenny Project “Symphonies”｜')+T(S.name);hero(S);unlocked(S)?details():gate()}
+else landing();
+$('#foot').innerHTML=`
+  <h2>${L('歡迎入席','Welcome to the table')}</h2>
+  <p class="note">${L('這是為你譜寫的一套晚餐。有任何過敏或不吃的食材，上菜前跟我說一聲。',"A dinner composed for you. If there is anything you can't eat, tell me before we begin.")}</p>
+  <a class="homelink" href="index.html">${L('回《動機 MOTIF》菜單 ›','Back to the MOTIF menu ›')}</a>
+  <p class="fine">${L('肯尼計畫《交響曲》｜菜單可能依當日食材調整。',"Kenny Project “Symphonies”｜The menu may change with the day's ingredients.")}</p>`;
+})();
+</script>
+</body>
+</html>
