@@ -1,6 +1,6 @@
 # kenny-motif
 
-Static frontend clone of https://adcafe.com.tw/motif/ (菜單 / 後援品牌 / 契機). All content hard-coded in `site/index.html`.
+Static site for 肯尼計畫《動機 MOTIF》 (菜單 / 後援品牌 / 契機), live at https://kennyhsieh1111.github.io/kenny-motif/. All content hard-coded in `site/index.html`.
 
 ```sh
 docker compose up -d
