@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Le Dressage《交響曲》｜Symphonies</title>
-<meta name="description" content="Le Dressage《交響曲》：為了迎接賓客而譜寫的全餐菜單，從序曲到終章。">
+<title>le dressage《交響曲》｜Symphonies</title>
+<meta name="description" content="le dressage《交響曲》：為了迎接賓客而譜寫的全餐菜單，從序曲到終章。">
 <meta name="theme-color" content="#FAF7F0">
 <script src="i18n.js"></script>
 <link rel="icon" href="logo/le-dressage-mark.svg" type="image/svg+xml">
@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap">
 <style>
-/* Symphonies: a standalone page in the Le Dressage look. Tokens, top bar and footer are copied from index.html;
+/* Symphonies: a standalone page in the le dressage look. Tokens, top bar and footer are copied from index.html;
    the programme layout is this page's own. ponytail: copied CSS instead of extracting a shared stylesheet. */
 :root{
   color-scheme:light;
@@ -170,7 +170,7 @@ html[data-theme="dark"] .illo rect{fill:#26271F;stroke:#3E3F34}
 
 <header class="bar">
   <div class="wrap">
-    <a class="brand" href="index.html" aria-label="回到菜單"><img src="logo/le-dressage-mark.svg" alt=""><span>Le Dressage<i>.</i></span></a>
+    <a class="brand" href="index.html" aria-label="回到菜單"><img src="logo/le-dressage-mark.svg" alt=""><span>le dressage<i>.</i></span></a>
     <nav class="tabs" aria-label="頁面分頁">
       <a class="tab" href="index.html">菜單</a>
       <a class="tab" href="index.html#partners" hidden>後援品牌</a>
@@ -257,7 +257,7 @@ function hero(s){
     </span></h1>
     <p class="feat">${esc(T(s.lead))}<span class="by">${esc(T(s.host))}</span></p>
     <ul class="pills">${s.pills.map(p=>`<li class="pill">${esc(T(p))}</li>`).join('')}</ul>`:`
-    <div class="eyebrow">${L('Le Dressage・全餐系列','Le Dressage · Full-course series')}</div>
+    <div class="eyebrow">${L('le dressage・全餐系列','le dressage · Full-course series')}</div>
     <h1 class="h1"><span class="title">
       <span class="t1">${L('交響曲','Symphonies')}</span>
       <span class="t2 en">${lang==='en'?'交響曲':'<em>Symphonies</em>'}</span>
@@ -274,7 +274,7 @@ const show=s=>{const d=new Date(s.date+'T00:00:00');
       <span class="meta">${unlocked(s)?L('已解鎖・點開看菜單','Unlocked · open the menu'):L('憑入場密碼','Code required')}</span></span>
     <span class="chev">›</span></a>`};
 function landing(){
-  document.title=L('Le Dressage《交響曲》｜Symphonies','Le Dressage “Symphonies”');
+  document.title=L('le dressage《交響曲》｜Symphonies','le dressage “Symphonies”');
   hero(null);
   $('#body').innerHTML=`<div class="sec">
     <div class="sec-h"><span class="latin">Concerts</span><h2>${L('演出場次','Concerts')}</h2></div>
@@ -347,13 +347,13 @@ function details(){
 }
 
 /* ---------- route ---------- */
-if(S){document.title=L('Le Dressage《交響曲》｜','Le Dressage “Symphonies”｜')+T(S.name);hero(S);unlocked(S)?details():gate()}
+if(S){document.title=L('le dressage《交響曲》｜','le dressage “Symphonies”｜')+T(S.name);hero(S);unlocked(S)?details():gate()}
 else landing();
 $('#foot').innerHTML=`
   <h2>${L('歡迎入席','Welcome to the table')}</h2>
   <p class="note">${L('這是為你譜寫的一套晚餐。有任何過敏或不吃的食材，上菜前跟我說一聲。',"A dinner composed for you. If there is anything you can't eat, tell me before we begin.")}</p>
   <a class="homelink" href="index.html">${L('回《上桌之前 BEHIND THE SERVE》菜單 ›','Back to the Behind the Serve menu ›')}</a>
-  <p class="fine">${L('Le Dressage《交響曲》｜菜單可能依當日食材調整。',"Le Dressage “Symphonies”｜The menu may change with the day's ingredients.")}</p>`;
+  <p class="fine">${L('le dressage《交響曲》｜菜單可能依當日食材調整。',"le dressage “Symphonies”｜The menu may change with the day's ingredients.")}</p>`;
 })();
 </script>
 </body>
