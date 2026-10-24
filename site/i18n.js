@@ -47,6 +47,7 @@ const EN={
 '每一杯背後，都有一個想被理解的瞬間。如果今天有哪一口讓你若有所思，歡迎把那個瞬間留下來，也可以標記我們。每一則分享我們都會認真閱讀回覆，這場活動中合力的每一位夥伴也同樣期待與你交流。':"Behind every cup is a moment waiting to be understood. If a sip today gave you pause, feel free to capture that moment and tag us. We read and reply to every post, and every partner in this event is just as eager to hear from you.",
 '複製所有標記':"Copy all tags",
 '肯尼計畫《動機 MOTIF》feat. 阿問':"Kenny Project “MOTIF” feat. A-Wen",
+'靈感來自 AD Cafe《動機 MOTIF》企劃 ›':"Inspired by AD Cafe's “MOTIF” project ›",
 '飲品照片為示意圖，實際出杯以現場為準。':"Drink photos are for illustration; actual serves may vary.",
 '上一項':"Previous",'下一項':"Next",'關閉':"Close",
 /* ---- labels written by the render code ---- */
