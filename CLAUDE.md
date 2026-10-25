@@ -2,7 +2,7 @@
 
 Static bilingual menu site: the event menu (`site/index.html`, tabs 菜單 / 契機) and Symphonies, full-course dinner programmes behind an entry code (`site/symphonies.html`). No build step. **Version 0.0.1** (`README.md`, `CHANGELOG.md` — bump together).
 
-**Design system:** [Le Dressage](https://claude.ai/artifact/4SAq4UJfqT4viF7YMDHpPc) — read its `project/README.md` before styling anything. It is the serve-side sibling of the mise. design system (`../mise-en-place/.claude/skills/mise-en-place-design/`): same olive / clay / sand ramps, same three typefaces, same mark construction. Tokens live in `site/tokens.css` (light at the top, dark below); both pages link it. Change a value there and in the design system together.
+**Design system:** [Le Dressage](https://claude.ai/artifact/4SAq4UJfqT4viF7YMDHpPc) — read its `project/README.md` before styling anything. It is the serve-side sibling of the mise. design system (`../mise-en-place/.claude/skills/mise-en-place-design/`): same olive / clay / sand ramps, same three typefaces, same mark construction. Tokens and the shared parts (top bar, hero title, section heads, tags, footer) live in `site/style.css` (light tokens at the top, dark below); both pages link it, then add their own layout in an inline `<style>`. Colours go through tokens; never write a literal colour or a `html[data-theme="dark"]` override for one. The plating motif's geometry is `site/plating.js` (the menu paints it to canvases, Symphonies draws it as SVG). Change a value here and in the design system together.
 
 **Changelog:** `CHANGELOG.md`, one entry per version. Update it whenever you ship a visible change.
 
@@ -18,7 +18,7 @@ Same flow as mise.
   - **README.md** — *Features* and *Architecture*.
   - **CLAUDE.md** — this file.
   - **`docs/architecture.html`** — if pages, data flow or storage changed.
-  - **Design system** — tokens and components match `site/tokens.css` and the pages.
+  - **Design system** — tokens and components match `site/style.css` and the pages.
   - **Version** — vX.Y.Z everywhere listed above; `git grep -nF <previous version>` finds leftovers (past changelog entries are expected hits).
 
   Then PR `release/vX.Y.Z` → `main`. After it merges, tag the merge commit and push the tag: `git tag -a vX.Y.Z <merge-sha> -m "vX.Y.Z" && git push origin vX.Y.Z`. The next change then cuts the next release branch.
