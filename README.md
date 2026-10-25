@@ -23,7 +23,7 @@ Fonts load from Google Fonts; everything else is local. Google Analytics tag rem
 
 ## Features
 
-- **Language toggle** (EN / 中) and **theme toggle** (sun / moon) in the header. Choice is saved in `localStorage`; first visit follows the browser language and OS colour scheme.
+- **Same shell as mise.**: the top bar (mark and wordmark, pill page tabs with Lucide icons, a settings button at the right), the settings panel (語言 Language: 中文 / English; 主題 Theme: 日間 / 夜間) and the 開發者 *Developed by* credit closing each page match mise.'s, so moving between the two apps feels like one product. Choices are saved in `localStorage`; first visit follows the browser language and OS colour scheme.
 - `site/i18n.js` holds the English dictionary and the theme/lang bootstrap. `site/style.css` holds the [design system](https://claude.ai/artifact/4SAq4UJfqT4viF7YMDHpPc) tokens (light and dark) and the parts both pages share; each page adds its own layout inline.
 - **Plating motif**: `site/plating.js` draws a dressed plate (rim, spoon swooshes, dot trails, herbs, crumbs) from a seed. The menu paints it to canvases that turn with the scroll; Symphonies draws it as SVG.
 - URL overrides for sharing a specific view: `?lang=en&theme=dark`.

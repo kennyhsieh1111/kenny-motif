@@ -4,6 +4,8 @@ Static bilingual menu site: the event menu (`site/index.html`, tabs 菜單 / 契
 
 **Design system:** [Le Dressage](https://claude.ai/artifact/4SAq4UJfqT4viF7YMDHpPc) — read its `project/README.md` before styling anything. It is the serve-side sibling of the mise. design system (`../mise-en-place/.claude/skills/mise-en-place-design/`): same olive / clay / sand ramps, same three typefaces, same mark construction. Tokens and the shared parts (top bar, hero title, section heads, tags, footer) live in `site/style.css` (light tokens at the top, dark below); both pages link it, then add their own layout in an inline `<style>`. Colours go through tokens; never write a literal colour or a `html[data-theme="dark"]` override for one. The plating motif's geometry is `site/plating.js` (the menu paints it to canvases, Symphonies draws it as SVG). Change a value here and in the design system together.
 
+**Shared shell with mise.:** the top bar, the settings panel and the credit footer copy mise.'s (`Shelf.tsx` topbar + `PlaceNav.tsx`, `SettingsMenu.tsx`, the `.credit` footer in `app/layout.tsx`; CSS in `web/src/styles/app.css`): same sizes, places, icons (Lucide) and labels. Change one, change the other.
+
 **Changelog:** `CHANGELOG.md`, one entry per version. Update it whenever you ship a visible change.
 
 ## Git flow (releases batch features)

@@ -37,8 +37,7 @@ history.replaceState(null,'',u.pathname+u.search+u.hash)}catch(e){}})();
   --c-yuanyang:#98694A; --c-theme:#BD9166; --c-variation:#C07A2E; --c-halcyon:#CD6D2A; --c-twilight:#D5A624;
   --c-peru:#7B5A43; --c-geisha:#B5534A; --c-beans:#6E4B36;
 }
-[hidden]{display:none!important}
-main,footer{position:relative;z-index:1}
+main,.share,.credit{position:relative;z-index:1}
 
 /* floating rings behind the page */
 .bgrings{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
@@ -218,9 +217,9 @@ img.clogo{object-fit:contain;display:block}
 /* who made this drink */
 .tag.maker-t{border-color:transparent;background:var(--ink);color:var(--bg);font-weight:700;cursor:pointer}
 .spon .ig a:hover,.venue .igl:hover{text-decoration:underline}
-.venue,.person{scroll-margin-top:72px}
+.venue,.person{scroll-margin-top:var(--below-bar)}
 .all .logo,.all .clogo{width:80%;height:32px;color:var(--ink)}
-.spon{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 16px;margin-top:14px;scroll-margin-top:72px;overflow:hidden}
+.spon{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 16px;margin-top:14px;scroll-margin-top:var(--below-bar);overflow:hidden}
 .spon-pic{margin:-18px -16px 16px;background:var(--bg-2)}
 .spon-pic img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
 .spon.flash{animation:flash 1.4s ease}
@@ -279,15 +278,15 @@ html[data-theme="dark"] .rings .top text{fill:#C6CFB1}
 <div class="bgrings" aria-hidden="true" id="bgrings"></div>
 
 <header class="bar">
-  <div class="wrap">
+  <div class="bar__inner">
     <a class="brand" href="#menu" aria-label="回到菜單"><img src="logo/le-dressage-mark.svg" alt=""><span>le dressage<i>.</i></span></a>
     <nav class="tabs" role="tablist" aria-label="頁面分頁">
-      <button class="tab" role="tab" id="t-menu" aria-controls="menu" aria-selected="true" data-tab="menu">菜單</button>
-      <button class="tab" role="tab" id="t-partners" hidden aria-controls="partners" aria-selected="false" data-tab="partners">後援品牌</button>
-      <button class="tab" role="tab" id="t-story" aria-controls="story" aria-selected="false" data-tab="story">契機</button>
-      <a class="tab" href="symphonies.html">交響曲</a>
+      <button class="tab" role="tab" id="t-menu" aria-controls="menu" aria-selected="true" data-tab="menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8"/><path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7"/><path d="m2.1 21.8 6.4-6.3"/><path d="m19 5-7 7"/></svg><span>菜單</span></button>
+      <button class="tab" role="tab" id="t-partners" hidden aria-controls="partners" aria-selected="false" data-tab="partners"><span>後援品牌</span></button>
+      <button class="tab" role="tab" id="t-story" aria-controls="story" aria-selected="false" data-tab="story"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 12h-5"/><path d="M15 8h-5"/><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg><span>契機</span></button>
+      <a class="tab" href="symphonies.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><span>交響曲</span></a>
     </nav>
-    <div class="ctl"><button id="langBtn" type="button">EN</button><button id="themeBtn" type="button"></button></div>
+    <div class="ctl"><div class="settings" id="settings"></div></div>
   </div>
 </header>
 
@@ -390,13 +389,14 @@ html[data-theme="dark"] .rings .top text{fill:#C6CFB1}
 </section>
 </main>
 
-<footer class="share">
+<section class="share">
   <div class="wrap">
     <h2>謝謝你，成為這一杯的最後一步</h2>
     <p class="note">每一杯上桌之前，都走過許多看不見的準備：選豆、試配、一次又一次地調整。直到端到你面前，這些準備才算完成。如果今天有哪一口讓你停下來想了想，那就是我們最想聽見的回應。</p>
     <p class="fine">le dressage《上桌之前 BEHIND THE SERVE》feat. 阿問<br>飲品照片為示意圖，實際出杯以現場為準。<br><a href="https://adcafe.com.tw/motif/" target="_blank" rel="noopener">靈感來自 AD Cafe《動機 MOTIF》企劃 ›</a></p>
   </div>
-</footer>
+</section>
+<footer class="credit"><span>開發者</span><span class="credit__name">Kenny Hsieh</span></footer>
 
 <div class="scrim" id="scrim" hidden></div>
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
