@@ -43,16 +43,15 @@ const EN={
 '城市峽谷｜「阿問」 吳柄頡 Sion Wu':"Urban Canyon｜Sion Wu, “A-Wen”",
 '台灣近年最受矚目的咖啡調酒師之一，拿下四屆（2019、2020、2022、2025）TCIGS 台灣咖啡調酒大賽冠軍。以精準的風味拆解與重組聞名，獨創「杯測表 × 風味輪」調飲研發系統。':"One of Taiwan's most watched coffee bartenders in recent years, four-time champion (2019, 2020, 2022, 2025) of the Taiwan Coffee in Good Spirits Championship. Known for precise flavour deconstruction and recombination, he created a “cupping form × flavour wheel” drink development system.",
 '今年帶著木木一同在世界舞台上奪得佳績，他重新演繹台灣經典的風味意象：珍珠多多綠、鳳梨酥，甚至是小籠包。這是他拿下世界亞軍後，第一次在台灣北中南巡迴客座。':"This year, with Mumu alongside, he placed on the world stage by reinterpreting classic Taiwanese flavour images: pearl yogurt green tea, pineapple cake, even xiaolongbao. This is his first guest tour across Taiwan since becoming world runner-up.",
-'謝謝你，來多貪一杯':"Thank you for coming for one more cup",
-'每一杯背後，都有一個想被理解的瞬間。如果今天有哪一口讓你若有所思，歡迎把那個瞬間留下來，也可以標記我們。每一則分享我們都會認真閱讀回覆，這場活動中合力的每一位夥伴也同樣期待與你交流。':"Behind every cup is a moment waiting to be understood. If a sip today gave you pause, feel free to capture that moment and tag us. We read and reply to every post, and every partner in this event is just as eager to hear from you.",
-'複製所有標記':"Copy all tags",
+'謝謝你，成為這一杯的最後一步':"Thank you for being the last step of every cup",
+'每一杯上桌之前，都走過許多看不見的準備：選豆、試配、一次又一次地調整。直到端到你面前，這些準備才算完成。如果今天有哪一口讓你停下來想了想，那就是我們最想聽見的回應。':"Before a cup reaches you, it has been through preparation you never see: choosing the beans, testing pairings, adjusting again and again. That work is only finished when the cup is set in front of you. If a sip today made you pause, that is the response we most hope to hear.",
 'le dressage《上桌之前 BEHIND THE SERVE》feat. 阿問':"le dressage “Behind the Serve” feat. A-Wen",
 '靈感來自 AD Cafe《動機 MOTIF》企劃 ›':"Inspired by AD Cafe's “MOTIF” project ›",
 '飲品照片為示意圖，實際出杯以現場為準。':"Drink photos are for illustration; actual serves may vary.",
 '上一項':"Previous",'下一項':"Next",'關閉':"Close",
 /* ---- labels written by the render code ---- */
 '今天':"Today",'不含咖啡':"No coffee",'阿迪手沖單品':"Adi's pour-over",'上桌之前：':"Before the serve: ",'上桌之前':"Before the serve",
-'收藏':"Save",'已收藏':"Saved",'已複製':"Copied",'看 9 種口味 ›':"See 9 flavours ›",'看介紹 ›':"Details ›",
+'收藏':"Save",'已收藏':"Saved",'看 9 種口味 ›':"See 9 flavours ›",'看介紹 ›':"Details ›",
 '還沒有收藏的飲品。按飲品右下角的愛心，就會出現在這裡。':"No favourites yet. Tap the heart on a drink and it will show up here.",
 '沒有符合的飲品。':"No matching drinks.",
 '調飲提案':"Used in",'研發時為什麼選它':"Why we chose it",'品牌介紹':"About the brand",'Instagram：':"Instagram: ",'聯絡方式：':"Contact: ",'即將更新':"Coming soon",
@@ -187,7 +186,7 @@ const EN={
 /* ---- groups / filters / tiers ---- */
 '巡迴四站都有':"At all four stops",'場地限定':"Venue exclusives",'只在當站供應':"Only at its own stop",
 '全部':"All",'我的收藏':"My favourites",'沒咖啡的':"No coffee",'純咖啡的':"Just coffee",
-'策展':"Curator",'特邀':"Guest",'聯合響應':"Co-hosts",
+'策展':"Curator",'特邀':"Guest",
 /* ---- bites ---- */
 '綠豆蔻白味噌費南雪':"Green Cardamom & White Miso Financier",'$180 / 2 枚':"$180 / 2 pcs",'香菜籽子・活動客製口味':"Xiangcai Zizi · custom flavour for the event",
 '香菜籽子是大稻埕附近的二樓老宅咖啡廳，以季節性甜點聞名。這次為客座客製了綠豆蔻白味噌口味，一份兩枚。':"Xiangcai Zizi is a second-floor old-house café near Dadaocheng known for seasonal desserts. For this guest menu they created a green cardamom and white miso flavour, two pieces per serving.",

@@ -60,20 +60,15 @@ main{overflow:hidden;overflow:clip}
 
 /* floating rings behind the page */
 .bgrings{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.bgrings .ray{opacity:0;transition:opacity 1.4s ease}
-.bgrings .ray.on{opacity:1}
 .bgrings .rings{position:absolute;opacity:.4}
 .rings{isolation:isolate}
 .rings .lyr,.rings .top{position:absolute;inset:0;width:100%;height:100%;overflow:visible;transform-origin:50% 50%}
 .rings .lyr{display:block;will-change:transform;mix-blend-mode:multiply}
-.beam{position:absolute;width:0;height:0;pointer-events:none;will-change:transform;transform-origin:0 0}
-.beam canvas{position:absolute;left:0;display:block}
 /* lite: phones that could not cope get a still picture (nothing turns, nothing kept on the GPU) */
-html.lite .rings .lyr,html.lite .beam{will-change:auto}
-.hero-beam{z-index:-1}
+html.lite .rings .lyr{will-change:auto}
 /* newer browsers: rotation follows the scroll bar directly on the compositor (no script per frame) */
 @keyframes rspin{from{transform:rotate(var(--a0,0deg))}to{transform:rotate(var(--a1,0deg))}}
-html.sd .rings .lyr,html.sd .beam{animation:rspin linear both;animation-timeline:scroll(root block);transition:rotate 1.5s cubic-bezier(.45,0,.2,1)}
+html.sd .rings .lyr{animation:rspin linear both;animation-timeline:scroll(root block);transition:rotate 1.5s cubic-bezier(.45,0,.2,1)}
 
 /* top bar */
 .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(250,247,240,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
@@ -329,14 +324,6 @@ details.about p{font-size:14px;color:var(--ink-2);margin:8px 0 0;line-height:1.8
 .share{margin-top:40px;padding-block:30px 44px;border-top:1px solid var(--line);background:rgba(244,239,230,.92)}
 .share h2{font-family:var(--serif);font-size:21px;margin:0}
 .share .note{font-size:15px;color:var(--ink-2);line-height:1.85;margin:10px 0 0}
-.tier{margin-top:16px}
-.tier .lbl{font-size:12px;letter-spacing:.14em;color:var(--ink-3);margin-bottom:6px}
-.handles{display:flex;flex-wrap:wrap;gap:6px}
-.h{font-size:13.5px;padding:4px 11px;border-radius:999px;background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--ink)}
-a.h:hover{border-color:var(--ink)}
-.h b{font-family:var(--latin);font-weight:500}
-.tier.t1 .h{font-size:15px;padding:6px 14px;border-color:var(--ink)}
-.copy{margin-top:18px;display:inline-flex;gap:8px;align-items:center;padding:9px 16px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:500;font-size:14px}
 .fine{font-size:12px;color:var(--ink-3);margin-top:22px;line-height:1.7}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 
@@ -371,7 +358,8 @@ html[data-theme="dark"] .fav[aria-pressed="true"]{color:#F08A98;border-color:#6B
 html[data-theme="dark"] .scrim{background:rgba(0,0,0,.6)}
 html[data-theme="dark"] .share{background:rgba(38,39,31,.92)}
 html[data-theme="dark"] .rings .lyr{mix-blend-mode:screen;opacity:.32}
-html[data-theme="dark"] .beam{opacity:.45}
+html[data-theme="dark"] .rings .top circle{fill:#2B2C23}
+html[data-theme="dark"] .rings .top text{fill:#C6CFB1}
 </style>
 
 </head>
@@ -492,11 +480,8 @@ html[data-theme="dark"] .beam{opacity:.45}
 
 <footer class="share">
   <div class="wrap">
-    <h2>謝謝你，來多貪一杯</h2>
-    <p class="note">每一杯背後，都有一個想被理解的瞬間。如果今天有哪一口讓你若有所思，歡迎把那個瞬間留下來，也可以標記我們。每一則分享我們都會認真閱讀回覆，這場活動中合力的每一位夥伴也同樣期待與你交流。</p>
-    <div id="tiers"></div>
-    <button class="copy" id="copyTags" type="button">複製所有標記</button>
-    <span id="copyMsg" role="status" style="font-size:13px;color:var(--ink-3);margin-left:8px"></span>
+    <h2>謝謝你，成為這一杯的最後一步</h2>
+    <p class="note">每一杯上桌之前，都走過許多看不見的準備：選豆、試配、一次又一次地調整。直到端到你面前，這些準備才算完成。如果今天有哪一口讓你停下來想了想，那就是我們最想聽見的回應。</p>
     <p class="fine">le dressage《上桌之前 BEHIND THE SERVE》feat. 阿問<br>飲品照片為示意圖，實際出杯以現場為準。<br><a href="https://adcafe.com.tw/motif/" target="_blank" rel="noopener">靈感來自 AD Cafe《動機 MOTIF》企劃 ›</a></p>
   </div>
 </footer>
@@ -679,14 +664,8 @@ const BITES=[
       ['梔子花四季春 × 胭脂梅酒凍','梔子花四季春茶 × 胭脂梅酒 × 砂糖橘','清香四季春茶搭配酸甜梅酒凍與柑橘，整體走清爽果香茶感路線。']
     ]}]}
 ];
-const TIERS=[
-  {lbl:'策展',cls:'t1',hs:[['AD Cafe','adcafe_']]},
-  {lbl:'特邀',cls:'t1',hs:[['阿問','sion_wu_']]},
-  {lbl:'聯合響應',hs:[['霓裡','loop_in_neon'],['StableNice BLDG.','stablenice.bldg'],['Phase Coffee Roasters','phase_coffee_roasters']]},
-  {lbl:'後援',hs:[['Liquid Ark','liquid_ark'],['芳時品味','ec_fancyfood'],['沂源','dip_ltd'],['Fever-Tree','fevertreetw'],['鮮乳坊','bettermilk.tw'],['滴滴香','didishiang'],['苗林行','miaolin1964'],['百懋國際','cojaft_coffee']]}
-];
 
-tr(BITES);tr(TIERS);
+tr(BITES);
 const $=s=>document.querySelector(s);
 /* analytics: no-op unless the page carries a gtag (official-site build) */
 const track=(n,p)=>{try{if(typeof window.gtag==='function')window.gtag('event',n,p||{})}catch(e){}};
@@ -726,36 +705,38 @@ try{const ls=localStorage,now=Date.now();
 try{const q=new URLSearchParams(location.search);if(q.has('lite'))LITE=true;if(q.has('full')){LITE=false;localStorage.removeItem('motif-lite')}}catch(e){}
 try{if((navigator.deviceMemory&&navigator.deviceMemory<=2)||(navigator.connection&&navigator.connection.saveData))LITE=true}catch(e){}
 if(LITE)document.documentElement.classList.add('lite');
-/* ---------- polar-area roses (after the menu & card artwork) ---------- */
-const SOFT=['#EFE3A0','#E6D09C','#F2C79B','#EAC2C6','#DAC7E0','#C8DBE6','#D2E0CF','#E8D3B6','#F4DA86'];
-const MID=['#D8B25E','#C98A5E','#A9B98E','#B89BC0','#86A9BF','#D9929A','#8E7B63','#E0A64A'];
-const NEED=['#EE9A38','#3F6B4A','#8C9A3A','#6E4A3E','#E3B23C','#7E9EC4','#D98A92','#A8553A'];
+/* ---------- plated backdrop: a plate (rim + well), spoon swooshes, dot trails, herbs and crumbs; each group turns at its own speed ---------- */
+const PLATE=['#ECE5D6','#E3D9C5','#C7BBA1'];
+const SAUCE=['#B9603C','#C98A5E','#DBA35F','#E8C879','#889670','#A8553A','#9C4A5E'];
+const DOTS=['#B9603C','#C98A3E','#E3B23C','#8C3A4F','#6A7A52','#D98A92'];
+const HERB=['#4A5B3A','#6A7A52','#889670'];
 function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
-function wedge(r0,r1,a0,a1){const p=(r,a)=>`${(r*Math.cos(a)).toFixed(1)} ${(r*Math.sin(a)).toFixed(1)}`;const L=(a1-a0)>Math.PI?1:0;
-  return r0>0?`M${p(r1,a0)}A${r1} ${r1} 0 ${L} 1 ${p(r1,a1)}L${p(r0,a1)}A${r0} ${r0} 0 ${L} 0 ${p(r0,a0)}Z`:`M0 0L${p(r1,a0)}A${r1} ${r1} 0 ${L} 1 ${p(r1,a1)}Z`}
-/* polar-area "rose" like the card fronts: soft fan + mid fan + long thin rays; each group spins at its own speed */
-function rose(seed,R,opt={}){const r=rng(seed);const D2=Math.PI/180;const soft=[],mid=[],need=[];let far=R*.2;
-  let a=r()*Math.PI*2;
-  for(let i=0;i<(opt.n||12);i++){const span=(16+r()*30)*D2;const rad=R*(.5+r()*.5);
-    const d=wedge(0,rad,a,a+span);const c=SOFT[Math.floor(r()*SOFT.length)];soft.push({d,c,o:.72+r()*.25});
-    a+=span*(.6+r()*.6)}
-  a=r()*Math.PI*2;
-  for(let i=0;i<(opt.m||6);i++){const span=(12+r()*24)*D2;const rad=R*(.38+r()*.4);
-    const d=wedge(0,rad,a,a+span);const c=MID[Math.floor(r()*MID.length)];mid.push({d,c,o:.5+r()*.3});
-    a+=span+(18+r()*46)*D2}
-  a=r()*Math.PI*2;
-  const inf=[];
-  for(let i=0;i<(opt.k||4);i++){const span=(2.4+r()*4.5)*D2;const rad=R*(opt.long||1.3)*(.65+r()*.5);const c=NEED[Math.floor(r()*NEED.length)],o=(.8+r()*.18).toFixed(2);
-    if((opt.inf||[]).includes(i))inf.push({th:a+span/2+(opt.infTurn||0)*D2,w:1.8,c,o:+o,r0:R*.12});
-    else{need.push({d:wedge(R*.12,rad,a,a+span),c,o:+o});far=Math.max(far,rad)}
-    a+=(55+r()*70)*D2}
-  (opt.rays||[]).forEach(([deg,w,len,c,o,bw])=>{const a0=deg*D2;if(bw)inf.push({th:a0+w*D2/2,w:bw,c,o:+o,r0:R*.12});else{need.push({d:wedge(R*.1,R*len,a0,a0+w*D2),c,o:+o});far=Math.max(far,R*len)}});
-  const out=[soft,mid,need];out.ext=[R,R*.78,far];out.beams=inf;return out}
+const P=(r,a)=>`${(r*Math.cos(a)).toFixed(1)} ${(r*Math.sin(a)).toFixed(1)}`;
+/* outer circle clockwise, inner counter-clockwise: the inner one becomes a hole */
+function ring(r0,r1){const c=(r,s)=>`M${r} 0A${r} ${r} 0 1 ${s} ${-r} 0A${r} ${r} 0 1 ${s} ${r} 0Z`;return c(r1,1)+(r0>0?c(r0,0):'')}
+/* a spoon swoosh along an arc: heavy where the spoon lands, thinning out as it drags */
+function swoosh(rr,a0,span,w){const o=[],i=[];for(let j=0;j<=28;j++){const t=j/28,a=a0+span*t,h=w*Math.min(1,t*5)*Math.pow(1-t,.55)+.5;o.push(P(rr+h,a));i.push(P(rr-h,a))}
+  return 'M'+o.join('L')+'L'+i.reverse().join('L')+'Z'}
+function dot(r,a,s){const x=r*Math.cos(a),y=r*Math.sin(a),f=v=>v.toFixed(1);return `M${f(x+s)} ${f(y)}A${s} ${s} 0 1 1 ${f(x-s)} ${f(y)}A${s} ${s} 0 1 1 ${f(x+s)} ${f(y)}Z`}
+function leaf(r,a,l,turn){const x=r*Math.cos(a),y=r*Math.sin(a),c=Math.cos(a+turn),s=Math.sin(a+turn),w=l*.45;
+  const q=(u,v)=>`${(x+u*c-v*s).toFixed(1)} ${(y+u*s+v*c).toFixed(1)}`;return `M${q(-l,0)}Q${q(0,w)} ${q(l,0)}Q${q(0,-w)} ${q(-l,0)}Z`}
+/* groups: [plate, sauce, garnish] — m swooshes, k dot trails, l herb leaves, c crumbs */
+function plating(seed,R,opt={}){const r=rng(seed),D2=Math.PI/180,pick=a=>a[Math.floor(r()*a.length)];
+  const plate=[{d:ring(R*.62,R),c:PLATE[1],o:.85},{d:ring(0,R*.62),c:PLATE[0],o:.6},{d:ring(R*.975,R),c:PLATE[2],o:.7},{d:ring(R*.61,R*.625),c:PLATE[2],o:.5}];
+  const sauce=[];let a=r()*Math.PI*2,ms=0;
+  for(let i=0;i<(opt.m||2);i++){const rr=R*(.3+r()*.22),w=R*(.045+r()*.04);sauce.push({d:swoosh(rr,a,(70+r()*90)*D2,w),c:pick(SAUCE),o:.75+r()*.2});ms=Math.max(ms,rr+w);a+=(120+r()*90)*D2}
+  const garnish=[];let gs=0;a=r()*Math.PI*2;
+  for(let i=0;i<(opt.k||3);i++){const rr=R*(.24+r()*.34),c=pick(DOTS);let s=R*(.03+r()*.02),b=a;
+    for(let j=0,n=4+Math.floor(r()*3);j<n;j++){garnish.push({d:dot(rr,b,s),c,o:.85});gs=Math.max(gs,rr+s);b+=s*2.8/rr;s*=.74}
+    a+=(90+r()*80)*D2}
+  for(let i=0;i<(opt.l||3);i++){const rr=R*(.2+r()*.38),l=R*(.035+r()*.03);garnish.push({d:leaf(rr,r()*Math.PI*2,l,r()*Math.PI),c:pick(HERB),o:.8});gs=Math.max(gs,rr+l)}
+  for(let i=0;i<(opt.c||10);i++){const rr=R*(.15+r()*.45),s=R*(.006+r()*.01);garnish.push({d:dot(rr,r()*Math.PI*2,s),c:pick(DOTS),o:.7});gs=Math.max(gs,rr+s)}
+  const out=[plate,sauce,garnish];out.ext=[R*1.01,ms,gs];return out}
 /* memory matters more than anything on phones (an iPhone draws every layer at 3x, and in-app browsers
    like LINE / IG get little memory). So each turning group is painted ONCE into a small canvas whose
    resolution we choose, cut to the size of its own shapes, with the soft edge baked in. The GPU then
    only turns ready-made pictures. */
-const spinners=[],beamEls=[];
+const spinners=[];
 const SVGNS='http://www.w3.org/2000/svg';
 const DPR=Math.max(1,window.devicePixelRatio||1);
 function paint(L,alphaOf){const {cv,items,ext,sc,fade}=L;const ctx=cv.getContext('2d');
@@ -770,38 +751,27 @@ function mount(box,groups,speeds,intro,hub,extra,half,sc,fade){
     const L={cv,items,ext,sc,fade:i===2?fade:null};paint(L);box.appendChild(cv);spinners.push({g:cv,speed:speeds[i],intro:intro[i]||0});return L});
   if(hub||extra){const t=document.createElementNS(SVGNS,'svg');t.setAttribute('viewBox',`${-half} ${-half} ${half*2} ${half*2}`);t.setAttribute('class','top');t.innerHTML=(hub?`<circle r="${hub}" fill="#FAF7F0" fill-opacity=".94"/>`:'')+(extra||'');box.appendChild(t)}
   return layers}
-/* rays that never end: a thin wedge pinned at the rose's centre and turned with a transform */
-function makeBeam(parent,left,top,b,alpha,speed,intro,before){
-  const L=3200,half=L*Math.tan(b.w*Math.PI/360),sc=Math.min(DPR,1.25),H=Math.ceil(half*2)+2;
-  const w=document.createElement('div');w.className='beam';w.style.left=left;w.style.top=top;
-  const cv=document.createElement('canvas');cv.width=Math.ceil(L*sc);cv.height=Math.ceil(H*sc);cv.style.cssText=`top:${-H/2}px;width:${L}px;height:${H}px`;
-  const ctx=cv.getContext('2d');ctx.scale(sc,sc);ctx.globalAlpha=b.o*alpha;ctx.fillStyle=b.c;
-  ctx.beginPath();ctx.moveTo(0,H/2);ctx.lineTo(L,H/2-half);ctx.lineTo(L,H/2+half);ctx.closePath();ctx.fill();
-  w.appendChild(cv);parent.insertBefore(w,before||null);beamEls.push({el:w,th:b.th*180/Math.PI,speed,intro});return w}
-/* hero: big rose, top-right, with long rays sweeping across the title like the printed menu */
+/* hero: one big plated dish, top-right */
 const HR=250,HUB=64;
-const HG=rose(7,HR,{inf:[1],infTurn:26,n:13,m:6,k:4,long:1.5,rays:[[172,5,1.9,'#F2B63C',.8],[181,3,1.75,'#F4D06A',.85],[190,7,1.55,'#EFC35A',.55],[118,2.6,1.7,'#7E9EC4',.75]]});
-const heroBox=document.querySelector('.hero-box');
-HG.beams.forEach(b=>makeBeam(heroBox,'86%','140px',b,1,.09,-100,heroBox.firstChild).classList.add('hero-beam'));
+const HG=plating(7,HR,{m:3,k:3,l:4,c:14});
 mount($('#heroRose'),HG,[.05,-.09,.14],[-45,70,-100],HUB,
   `<defs><path id="hubArc" d="M${-HUB+12} 0A${HUB-12} ${HUB-12} 0 0 1 ${HUB-12} 0"/></defs>
-   <text font-family="Jost,Futura,sans-serif" font-size="13" letter-spacing="2" fill="#3a352e"><textPath href="#hubArc" startOffset="50%" text-anchor="middle">Behind every SERVE</textPath></text>`,480,
+   <text font-family="Hanken Grotesk,sans-serif" font-size="13" font-weight="500" letter-spacing="2" fill="#4A5B3A"><textPath href="#hubArc" startOffset="50%" text-anchor="middle">Behind every SERVE</textPath></text>`,480,
   Math.min(DPR,2),{r:480,stops:[[0,1],[.52,1],[.78,.55],[1,0]]});
-/* floating roses behind the rest of the page (a third one sat below the screen where no one could see it; removed) */
+/* plated dishes floating behind the rest of the page */
 const bg=$('#bgrings');const lateRays=[];let lateLayer=null;
 [/* [centre-x css, centre-y css, seed, speeds, options] */
- ['0px','calc(46vh + 210px)',31,[.035,-.06,.1],{late:true,n:10,m:5,k:5,long:1.7,rays:[[-28,4,1.95,'#F2B63C',.8,1.5],[-12,2.6,1.8,'#E3A0A6',.75],[-52,3,1.6,'#7E9EC4',.7,1.2]]}],
- ['calc(100% + 10px)','calc(96vh + 190px)',53,[-.05,.07,-.12],{n:10,m:5,k:3,long:1.05}]
+ ['0px','calc(46vh + 210px)',31,[.035,-.06,.1],{late:true,m:2,k:4,l:3,c:12}],
+ ['calc(100% + 10px)','calc(96vh + 190px)',53,[-.05,.07,-.12],{m:2,k:2,l:2}]
 ].forEach(([cx,cy,seed,sp,opt])=>{
   const box=document.createElement('div');box.className='rings';
   box.style.cssText=`left:calc(${cx} - 400px);top:calc(${cy} - 400px);width:800px;height:800px`;bg.appendChild(box);
-  const G=rose(seed,190,opt);
+  const G=plating(seed,190,opt);
   const R=rng(seed*7+1);
-  /* the late rays fade in one by one as you scroll: keep their own strength and repaint that one layer */
+  /* the late garnish lands piece by piece as you scroll: keep each piece's strength and repaint that one layer */
   const al=opt.late?G[2].map(()=>0):null;
   const layers=mount(box,G,sp,[],22,'',400,Math.min(DPR,1.5),{r:400,stops:[[0,1],[.5,1],[1,0]]});
   if(al){lateLayer={L:layers[2],al,to:al.slice()};paint(lateLayer.L,i=>al[i]);if(!LITE)G[2].forEach((_,i)=>lateRays.push({i,th:40+R()*760}))}
-  G.beams.forEach(b=>{const w=makeBeam(bg,cx,cy,b,.5,.025,0,box);if(opt.late){w.classList.add('ray');if(!LITE)lateRays.push({el:w,th:40+R()*760})}});
 });
 let fading=false,fadeT=0;
 function fadeStep(now){const L=lateLayer;const dt=Math.min(64,now-(fadeT||now));fadeT=now;let busy=false;
@@ -814,21 +784,19 @@ const UA=navigator.userAgent,IOS=/iPhone|iPad|iPod/.test(UA)||(navigator.platfor
 let SD=false;try{SD=!still&&!IOS&&/Chrome\//.test(UA)&&window.CSS&&CSS.supports('animation-timeline: scroll()')}catch(e){}
 if(SD){document.documentElement.classList.add('sd');
   const setSpin=()=>{const max=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
-    spinners.forEach(s=>{s.g.style.setProperty('--a1',(s.speed*max).toFixed(1)+'deg')});
-    beamEls.forEach(b=>{b.el.style.setProperty('--a0',b.th.toFixed(2)+'deg');b.el.style.setProperty('--a1',(b.th+b.speed*max).toFixed(1)+'deg')})};
+    spinners.forEach(s=>{s.g.style.setProperty('--a1',(s.speed*max).toFixed(1)+'deg')});};
   setSpin();try{new ResizeObserver(setSpin).observe(document.body)}catch(e){}window.addEventListener('resize',setSpin);
   /* the opening swing: start turned back, then ease to rest */
-  const intro=[...spinners.map(s=>[s.g,s.intro]),...beamEls.map(b=>[b.el,b.intro])].filter(x=>x[1]);
+  const intro=spinners.map(s=>[s.g,s.intro]).filter(x=>x[1]);
   intro.forEach(([el,d])=>{el.style.transition='none';el.style.rotate=d+'deg'});
   requestAnimationFrame(()=>requestAnimationFrame(()=>intro.forEach(([el])=>{el.style.transition='';el.style.rotate='0deg'})));
 }
 let stillDone=false;
 function frame(now){ticking=false;const y=window.scrollY||0;const k=(still||SD)?0:Math.max(0,1-(now-t0)/1500);const e=k*k*(3-2*k);
   const turn=!(still&&stillDone);stillDone=true;
-  if(!SD&&turn){spinners.forEach(s=>{s.g.style.transform=`rotate(${((still?0:y*s.speed)+s.intro*e).toFixed(2)}deg)`});
-  beamEls.forEach(b=>{b.el.style.transform=`rotate(${(b.th+(still?0:y*b.speed)+b.intro*e).toFixed(2)}deg)`})}
+  if(!SD&&turn){spinners.forEach(s=>{s.g.style.transform=`rotate(${((still?0:y*s.speed)+s.intro*e).toFixed(2)}deg)`});}
   const hb=document.querySelector('.hero-box');const exitY=hb&&hb.offsetHeight?hb.offsetTop+hb.offsetHeight:0;
-  lateRays.forEach(r=>{const on=y-exitY>r.th;if(r.el)r.el.classList.toggle('on',on);else if(lateLayer.to[r.i]!==(on?1:0)){lateLayer.to[r.i]=on?1:0;if(!fading){fading=true;requestAnimationFrame(fadeStep)}}});
+  lateRays.forEach(r=>{const on=y-exitY>r.th;if(lateLayer.to[r.i]!==(on?1:0)){lateLayer.to[r.i]=on?1:0;if(!fading){fading=true;requestAnimationFrame(fadeStep)}}});
   if(k>0)req()}
 function req(){if(!ticking){ticking=true;requestAnimationFrame(frame)}}
 window.addEventListener('scroll',req,{passive:true});req();
@@ -958,11 +926,6 @@ $('#fork').innerHTML=`<div><h4>獨立咖啡廳</h4><p>因為有我的經歷、�
 $('#venues').innerHTML=Object.values(V).map(v=>`<article class="venue" id="v-${v.id}"><div class="top">${logo(v.logo)}<div class="when">${v.days.map(x=>`${x[0]}（${x[1]}）${x[2]}`).join('<br>')}</div></div>
 <h3>${v.city}｜${esc(v.name)}</h3><p>${esc(v.intro)}</p>
 <div class="addr"><span>${esc(v.addr)}</span><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(v.addr.replace(/（.*）/,'')+' '+v.name)}" target="_blank" rel="noopener">開啟地圖 ›</a>${igA(v.ig,'igl latin')}</div></article>`).join('');
-
-/* ---------- footer ---------- */
-$('#tiers').innerHTML=TIERS.map(t=>`<div class="tier ${t.cls||''}"><div class="lbl">${t.lbl}</div><div class="handles">${t.hs.map(([n,h])=>`<a class="h" href="https://www.instagram.com/${h}/" target="_blank" rel="noopener" title="${esc(n)}"><b>@${h}</b></a>`).join('')}</div></div>`).join('');
-$('#copyTags').onclick=async()=>{const txt=TIERS.flatMap(t=>t.hs.map(h=>'@'+h[1])).join(' ');const m=$('#copyMsg');
-  try{await navigator.clipboard.writeText(txt);m.textContent='已複製'}catch(e){m.textContent=txt}};
 
 /* ---------- sheet ---------- */
 const sheet=$('#sheet'),scrim=$('#scrim'),body=$('#sheetBody');let cur=null,lastFocus=null;
