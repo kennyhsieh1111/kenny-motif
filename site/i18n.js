@@ -15,7 +15,7 @@ H.lang=lang==='en'?'en':'zh-Hant-TW';H.dataset.theme=theme;
 const EN={
 /* ---- chrome / static ---- */
 '菜單':"Menu",'後援品牌':"Partners",'契機':"Story",'交響曲':"Symphonies",
-'回到菜單':"Back to menu",'頁面分頁':"Page tabs",
+'回到菜單':"Back to menu",'開發者':"Developed by",'頁面分頁':"Page tabs",
 '《上桌之前':"“",'》':"”",'活動契機 ›':"Why this event ›",
 '｜2026 WCIGS 世界咖啡烈酒大賽亞軍':"｜Runner-up, 2026 World Coffee in Good Spirits",
 '2026 WCIGS 世界咖啡烈酒大賽亞軍':"Runner-up, 2026 World Coffee in Good Spirits Championship",
@@ -232,15 +232,36 @@ function walk(o){
 if(lang==='en'){new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(node))).observe(H,{childList:true,subtree:true});node(document.head)} /* head (the title) is already parsed */
 window.MOTIF_I18N={lang,tr:o=>{if(lang==='en')walk(o);return o}};
 
-/* header buttons */
-const SUN='<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
-const MOON='<svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
-function paintTheme(){const dark=H.dataset.theme==='dark';const b=document.getElementById('themeBtn');if(!b)return;
-  b.innerHTML=dark?SUN:MOON;b.setAttribute('aria-label',lang==='en'?(dark?'Switch to light theme':'Switch to dark theme'):(dark?'切換為淺色':'切換為深色'));
+/* settings: the mise. settings menu — one button at the top bar's right, a panel with Language and Theme.
+   Icons are Lucide (settings-2, languages, sun, moon), as in mise. */
+const SV=d=>`<svg viewBox="0 0 24 24" aria-hidden="true">${d}</svg>`;
+const GEAR=SV('<path d="M14 17H5"/><path d="M19 7h-9"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/>');
+const LANGS=SV('<path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/>');
+const SUN=SV('<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>');
+const MOON=SV('<path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/>');
+const en=lang==='en',W=(zh,e)=>en?e:zh;
+function paintTheme(){const dark=H.dataset.theme==='dark';
+  document.querySelectorAll('[data-theme-pick]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themePick===H.dataset.theme)));
+  const i=document.getElementById('themeIcon');if(i)i.innerHTML=dark?MOON:SUN;
   const m=document.querySelector('meta[name="theme-color"]');if(m)m.content=dark?'#1D1E17':'#FAF7F0'}
 addEventListener('DOMContentLoaded',()=>{
-  const lb=document.getElementById('langBtn');if(lb){lb.textContent=lang==='en'?'中':'EN';lb.setAttribute('aria-label',lang==='en'?'切換為中文':'Switch to English');
-    lb.onclick=()=>{try{localStorage.setItem('motif-lang',lang==='en'?'zh':'en')}catch(e){}location.reload()}}
-  paintTheme();const tb=document.getElementById('themeBtn');if(tb)tb.onclick=()=>{H.dataset.theme=H.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('motif-theme',H.dataset.theme)}catch(e){}paintTheme()};
+  const box=document.getElementById('settings');if(!box)return;
+  box.innerHTML=`<button class="ctl-btn" type="button" aria-expanded="false" aria-controls="settingsPanel" aria-label="${W('設定','Settings')}">${GEAR}</button>
+<div class="settings__panel" id="settingsPanel" role="group" aria-label="${W('設定','Settings')}" hidden>
+  <div class="settings__row"><span class="settings__label">${LANGS}${W('語言','Language')}</span>
+    <div class="seg"><button type="button" data-lang-pick="zh" aria-pressed="${!en}">中文</button><button type="button" data-lang-pick="en" aria-pressed="${en}">English</button></div></div>
+  <div class="settings__row"><span class="settings__label"><span id="themeIcon" style="display:contents"></span>${W('主題','Theme')}</span>
+    <div class="seg"><button type="button" data-theme-pick="light">${W('日間','Day')}</button><button type="button" data-theme-pick="dark">${W('夜間','Dark')}</button></div></div>
+</div>`;
+  const btn=box.firstElementChild,panel=box.lastElementChild;
+  const show=on=>{panel.hidden=!on;btn.setAttribute('aria-expanded',String(on))};
+  btn.onclick=()=>show(panel.hidden);
+  document.addEventListener('pointerdown',e=>{if(!panel.hidden&&!box.contains(e.target))show(false)});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden){show(false);btn.focus()}});
+  panel.querySelectorAll('[data-lang-pick]').forEach(b=>b.onclick=()=>{if(b.dataset.langPick===lang)return;
+    try{localStorage.setItem('motif-lang',b.dataset.langPick)}catch(e){}location.reload()});
+  panel.querySelectorAll('[data-theme-pick]').forEach(b=>b.onclick=()=>{H.dataset.theme=b.dataset.themePick;
+    try{localStorage.setItem('motif-theme',H.dataset.theme)}catch(e){}paintTheme()});
+  paintTheme();
 });
 })();
