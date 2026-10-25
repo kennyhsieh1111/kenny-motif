@@ -4,6 +4,8 @@
 
 *Dressage* is the French kitchen word for plating — the moment a dish is dressed and served. It is the sister of **mise.** (*mise en place*, everything in its place): mise. is the prep, le dressage is the serve. The two share one visual system — olive, clay and sand on ivory; Bricolage Grotesque, Hanken Grotesk and Spline Sans Mono.
 
+**Version 0.0.1** · [changelog](CHANGELOG.md) · design system: [Le Dressage](https://claude.ai/artifact/4SAq4UJfqT4viF7YMDHpPc)
+
 Static menu site for le dressage《上桌之前 BEHIND THE SERVE》 (菜單 / 契機 / 交響曲), live at https://kennyhsieh1111.github.io/le-dressage/. All content hard-coded in `site/index.html`.
 
 ```sh
