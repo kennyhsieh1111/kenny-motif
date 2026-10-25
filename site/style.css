@@ -1,0 +1,102 @@
+/* le dressage — tokens and the parts both pages share (top bar, hero title, section heads, tags, footer).
+   Values follow the Le Dressage design system (https://claude.ai/artifact/4SAq4UJfqT4viF7YMDHpPc),
+   itself built on the mise. ramps: olive primary, clay accent, sand neutrals. Change a value here and there together. */
+:root{
+  color-scheme:light;
+  --bg:#FAF7F0; --bg-2:#F3EFE7; --card:#FFFFFF; --ink:#33352B; --ink-2:#54503F; --ink-3:#6C6657;
+  --line:#ECE5D6; --accent:#4A5B3A; --on-accent:var(--bg); --accent-bg:#F1F3EA; --accent-ink:#3B4A31;
+  --tint:#FAF0E8; --tint-ink:#7C3F2A; --tint-on:#9A4F33; --clay:#B9603C;
+  --heart:#C23A4F; --heart-soft:#FDEEF0; --heart-line:#F3C3CA;
+  --plate-ph-1:#EFE6D8; --plate-ph-2:#E9DFCF;
+  --bar:rgba(250,247,240,.86); --footer:rgba(244,239,230,.92); --scrim:rgba(25,18,10,.42); --halo:rgba(250,247,240,.9);
+  --photo-label:rgba(20,18,15,.78);
+  --shadow-sheet:0 14px 44px rgba(60,40,15,.16); --shadow-wall:0 6px 24px rgba(60,40,15,.08);
+  --serif:"Bricolage Grotesque","Noto Sans TC","PingFang TC",system-ui,sans-serif; /* display slot, kept as --serif to avoid renaming 20 call sites */
+  --sans:"Hanken Grotesk","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --latin:"Hanken Grotesk",system-ui,sans-serif;
+  --mono:"Spline Sans Mono",ui-monospace,monospace;
+  --gutter:18px; --maxw:720px;
+}
+html[data-theme="dark"]{color-scheme:dark;
+  --bg:#1D1E17; --bg-2:#21221A; --card:#26271F; --ink:#F3EFE7; --ink-2:#CFC9BA; --ink-3:#968D7B;
+  --line:#32332A; --accent:#889670; --accent-bg:#262C1E; --accent-ink:#C6CFB1;
+  --tint:#322218; --tint-ink:#E8BD9C;
+  --heart:#F08A98; --heart-soft:#3A1A20; --heart-line:#6B2A35;
+  --plate-ph-1:#26271F; --plate-ph-2:#32332A;
+  --bar:rgba(29,30,23,.86); --footer:rgba(38,39,31,.92); --scrim:rgba(0,0,0,.6); --halo:rgba(29,30,23,.9);
+  --shadow-sheet:0 14px 44px rgba(0,0,0,.55);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;margin:0}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter);position:relative}
+.latin{font-family:var(--latin);letter-spacing:.06em}
+main{overflow:hidden;overflow:clip}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bar);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:10px;height:56px}
+.brand{display:flex;align-items:center;gap:8px;min-width:0;text-decoration:none}
+.brand img{width:28px;height:28px;flex:none}
+.brand span{font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:-.02em;white-space:nowrap;color:var(--accent-ink)}
+.brand i,.title .t1 i{font-style:normal;color:var(--clay)} /* clay period, as in the mise. wordmark */
+.tabs{margin-left:auto;display:flex;gap:2px;background:var(--bg-2);border-radius:999px;padding:3px;min-width:0;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:5px 13px;border-radius:999px;font-size:14px;font-weight:500;color:var(--ink-2);white-space:nowrap;text-decoration:none}
+.tab[aria-selected="true"],.tab[aria-current="page"]{background:var(--accent);color:var(--on-accent)}
+.logo{display:inline-block;background:currentColor;-webkit-mask:var(--src) center/contain no-repeat;mask:var(--src) center/contain no-repeat}
+.ctl{display:flex;gap:6px;flex:none}
+.ctl button{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;font-family:var(--latin);font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--ink-2);transition:background .2s,color .2s,transform .2s}
+.ctl button:hover{background:var(--bg-2);color:var(--ink)}
+.ctl button:active{transform:scale(.92)}
+.ctl svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:640px){ .brand span{display:none} .tab{padding:5px 9px;font-size:13px} }
+/* phones: four tabs no longer fit beside the logo and controls, so they take a second row as a full-width segmented control */
+@media (max-width:480px){
+  .bar .wrap{flex-wrap:wrap;height:auto;padding-block:9px 8px;row-gap:6px}
+  .brand span{display:inline}
+  .tabs{order:1;flex:1 0 100%;margin-left:0} .ctl{margin-left:auto}
+  .tab{flex:1;text-align:center;padding:5px 4px}
+}
+
+/* hero title */
+.hero-box{position:relative}
+.h1{margin:0;font:inherit}
+.title .t1{display:block;font-family:var(--serif);font-weight:700;font-size:clamp(34px,10vw,50px);letter-spacing:-.02em;line-height:1.15;text-shadow:0 0 18px var(--halo)}
+html[lang="en"] .title .t1{font-size:clamp(30px,8.4vw,46px)}
+.title .t2{display:block;font-family:var(--serif);font-weight:700;font-size:clamp(17px,4.8vw,22px);letter-spacing:.24em;color:var(--ink-2);margin-top:8px}
+.title .t2 em{font-style:normal;font-family:var(--latin);font-weight:400;letter-spacing:.18em;font-size:.86em}
+.feat{font-size:15px;color:var(--ink-2);margin:12px 0 14px;line-height:1.6}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.pill{font-size:13px;padding:3px 11px;border-radius:999px;background:var(--accent-bg);color:var(--accent-ink);font-weight:500}
+
+/* plating motif: the dressed plate behind the hero (geometry in plating.js) */
+.rings{isolation:isolate}
+html[data-theme="dark"] .rings .lyr{mix-blend-mode:screen;opacity:.32}
+
+/* sections */
+.sec{padding-block:30px 6px}
+.eyebrow{font-family:var(--latin);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
+.display{font-family:var(--serif);font-weight:700;font-size:clamp(23px,6.4vw,30px);line-height:1.4;margin:4px 0 6px;text-wrap:balance}
+.sec-h{display:block;margin:0 0 6px}
+.sec-h h2{font-family:var(--serif);font-size:24px;font-weight:700;margin:0}
+.sec-h .latin{display:block;font-size:12px;letter-spacing:.22em;color:var(--ink-3);text-transform:uppercase;margin-bottom:2px}
+.sec-lead{color:var(--ink-2);font-size:15px;margin:0 0 14px}
+
+/* dishes: plate placeholder, notes, tags. --dc is the dish colour */
+.ph{background:conic-gradient(from 30deg,var(--dc) 0 28%,var(--plate-ph-1) 28% 40%,var(--dc) 40% 62%,var(--plate-ph-2) 62% 100%);position:relative}
+.ph::after{content:"";position:absolute;inset:26%;border-radius:50%;background:var(--card)}
+.one{font-size:13px;color:var(--ink-3);font-weight:400;line-height:1.55}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
+.tag{font-size:12px;padding:1px 8px;border-radius:999px;border:1px solid var(--line);color:var(--ink-2);white-space:nowrap;background:var(--card)}
+.tag.lim{border-color:transparent;background:var(--accent-bg);color:var(--accent-ink);font-weight:500}
+
+/* footer */
+.share{margin-top:40px;padding-block:30px 44px;border-top:1px solid var(--line);background:var(--footer)}
+.share h2{font-family:var(--serif);font-size:21px;margin:0}
+.share .note{font-size:15px;color:var(--ink-2);line-height:1.85;margin:10px 0 0}
+.fine{font-size:12px;color:var(--ink-3);margin-top:22px;line-height:1.7}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}

@@ -8,99 +8,42 @@
 <meta name="theme-color" content="#FAF7F0">
 <script src="i18n.js"></script>
 <link rel="icon" href="logo/le-dressage-mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap">
 <style>
-/* Symphonies: a standalone page in the le dressage look. Tokens, top bar and footer are copied from index.html;
-   the programme layout is this page's own. ponytail: copied CSS instead of extracting a shared stylesheet. */
-:root{
-  color-scheme:light;
-  --bg:#FAF7F0; --bg-2:#F3EFE7; --card:#FFFFFF; --ink:#33352B; --ink-2:#54503F; --ink-3:#8A8070;
-  --line:#ECE5D6; --accent:#4A5B3A; --accent-bg:#F1F3EA; --accent-ink:#3B4A31;
-  --serif:"Bricolage Grotesque","Noto Sans TC","PingFang TC",system-ui,sans-serif; /* display slot, kept as --serif to avoid renaming 20 call sites */
-  --sans:"Hanken Grotesk","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
-  --latin:"Hanken Grotesk",system-ui,sans-serif;
-  --mono:"Spline Sans Mono",ui-monospace,monospace;
-  --gutter:18px; --maxw:720px;
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;margin:0}
-button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
-.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter);position:relative}
-.latin{font-family:var(--latin);letter-spacing:.06em}
-main{overflow:hidden;overflow:clip}
+/* Symphonies: a standalone page in the le dressage look. Tokens, top bar, hero title and footer come from style.css;
+   the programme layout is this page's own. */
 
-/* top bar */
-.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(250,247,240,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.bar .wrap{display:flex;align-items:center;gap:10px;height:56px}
-.brand{display:flex;align-items:center;gap:8px;min-width:0;text-decoration:none}
-.brand img{width:28px;height:28px;flex:none}
-.brand span{font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:-.02em;white-space:nowrap;color:var(--accent-ink)}
-.brand i,.title .t1 i{font-style:normal;color:#B9603C} /* clay period, as in the mise. wordmark */
-.tabs{margin-left:auto;display:flex;gap:2px;background:var(--bg-2);border-radius:999px;padding:3px;min-width:0;overflow-x:auto;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tab{padding:5px 13px;border-radius:999px;font-size:14px;font-weight:500;color:var(--ink-2);white-space:nowrap;text-decoration:none}
-.tab[aria-current="page"]{background:var(--accent);color:var(--bg)}
-.logo{display:inline-block;background:currentColor;-webkit-mask:var(--src) center/contain no-repeat;mask:var(--src) center/contain no-repeat}
-.ctl{display:flex;gap:6px;flex:none}
-.ctl button{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;font-family:var(--latin);font-size:12px;font-weight:500;color:var(--ink-2);transition:background .2s,color .2s,transform .2s}
-.ctl button:hover{background:var(--bg-2);color:var(--ink)}
-.ctl button:active{transform:scale(.92)}
-.ctl svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-
-/* hero: the menu's polar rose, redrawn with conic gradients (no canvas, no script) */
-.hero-box{position:relative}
-.rose{position:absolute;width:640px;height:640px;left:calc(86% - 320px);top:-180px;pointer-events:none;isolation:isolate;z-index:0;color:var(--ink-2)}
-.rose i{position:absolute;inset:0;border-radius:50%;mix-blend-mode:multiply;-webkit-mask:radial-gradient(circle,#000 48%,transparent 72%);mask:radial-gradient(circle,#000 48%,transparent 72%);animation:spin var(--t) linear infinite}
-.rose .a{--t:160s;opacity:.85;background:conic-gradient(from 20deg,#EFE3A0 0 7%,transparent 7% 13%,#F2C79B 13% 25%,transparent 25% 30%,#DAC7E0 30% 39%,transparent 39% 46%,#C8DBE6 46% 55%,transparent 55% 61%,#D2E0CF 61% 71%,transparent 71% 78%,#EAC2C6 78% 89%,transparent 89%)}
-.rose .b{--t:220s;opacity:.7;inset:14%;animation-direction:reverse;background:conic-gradient(from 200deg,#D8B25E 0 6%,transparent 6% 19%,#B89BC0 19% 27%,transparent 27% 43%,#86A9BF 43% 49%,transparent 49% 64%,#D9929A 64% 73%,transparent 73%)}
-.rose .c{--t:120s;opacity:.9;inset:-22%;-webkit-mask:radial-gradient(circle,#000 30%,transparent 70%);mask:radial-gradient(circle,#000 30%,transparent 70%);background:conic-gradient(from 0deg,#EE9A38 0 1.1%,transparent 1.1% 29%,#3F6B4A 29% 29.8%,transparent 29.8% 57%,#E3B23C 57% 58.3%,transparent 58.3% 79%,#7E9EC4 79% 79.8%,transparent 79.8%)}
-.rose svg{position:absolute;left:50%;top:50%;width:128px;height:128px;margin:-64px;overflow:visible}
+/* hero: a dressed plate (plating.js), drawn as SVG; each layer turns at its own speed */
+.plate{position:absolute;width:640px;height:640px;left:calc(86% - 320px);top:-180px;pointer-events:none;isolation:isolate;z-index:0;overflow:visible}
+.plate .lyr{mix-blend-mode:multiply;animation:spin var(--t) linear infinite}
+.plate .hub{fill:var(--bg);fill-opacity:.94}
+.plate text{font-family:var(--latin);font-size:11px;font-weight:500;letter-spacing:1.4px;fill:var(--accent)}
+html[data-theme="dark"] .plate .lyr{mix-blend-mode:screen;opacity:.32}
 @keyframes spin{to{transform:rotate(360deg)}}
 .hero{padding-block:118px 34px;position:relative;z-index:1}
-.h1{margin:0;font:inherit}
-.title .t1{display:block;font-family:var(--serif);font-weight:700;font-size:clamp(34px,10vw,50px);letter-spacing:.12em;line-height:1.15;text-shadow:0 0 18px rgba(250,247,240,.9)}
-.title .t2{display:block;font-family:var(--serif);font-weight:700;font-size:clamp(17px,4.8vw,22px);letter-spacing:.24em;color:var(--ink-2);margin-top:8px}
-.title .t2 em{font-style:normal;font-family:var(--latin);font-weight:400;letter-spacing:.18em;font-size:.86em}
-html[lang="en"] .title .t1{letter-spacing:.06em;font-size:clamp(30px,8.4vw,46px)}
-.feat{font-size:15px;color:var(--ink-2);margin:12px 0 14px;line-height:1.6}
+/* the hero line here is a CJK concert name, not the Latin wordmark: open tracking */
+.title .t1{letter-spacing:.12em}
+html[lang="en"] .title .t1{letter-spacing:.06em}
 .feat .by{display:block;font-size:13px;color:var(--ink-3);margin-top:2px}
-.pills{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
-.pill{font-size:13px;padding:3px 11px;border-radius:999px;background:var(--accent-bg);color:var(--accent-ink);font-weight:500}
-
-/* sections */
-.sec{padding-block:30px 6px}
-.eyebrow{font-family:var(--latin);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
-.display{font-family:var(--serif);font-weight:700;font-size:clamp(23px,6.4vw,30px);line-height:1.4;margin:4px 0 6px;text-wrap:balance}
-.sec-h{display:block;margin:0 0 6px}
-.sec-h h2{font-family:var(--serif);font-size:24px;font-weight:700;margin:0}
-.sec-h .latin{display:block;font-size:12px;letter-spacing:.22em;color:var(--ink-3);text-transform:uppercase;margin-bottom:2px}
-.sec-lead{color:var(--ink-2);font-size:14.5px;margin:0 0 14px}
 
 /* programme: one movement per course */
 .prog{list-style:none;margin:0;padding:0;display:grid;gap:26px}
 .mov-h{display:flex;align-items:center;gap:12px;margin:0 0 10px}
 .mov-h .no{font-family:var(--serif);font-weight:700;font-size:30px;line-height:1;color:var(--mc);min-width:34px}
 .mov-h .mv{font-family:var(--serif);font-weight:700;font-size:17px;line-height:1.25}
-.mov-h .mv .latin{display:block;font-size:11.5px;color:var(--ink-3);text-transform:uppercase;font-weight:400;letter-spacing:.18em}
+.mov-h .mv .latin{display:block;font-size:12px;color:var(--ink-3);text-transform:uppercase;font-weight:400;letter-spacing:.18em}
 .mov-h .rule{flex:1;height:1px;background:var(--line)}
-.mov-h .course{font-size:12.5px;padding:3px 11px;border-radius:999px;background:var(--accent-bg);color:var(--accent-ink);font-weight:500;white-space:nowrap}
+.mov-h .course{font-size:13px;padding:3px 11px;border-radius:999px;background:var(--accent-bg);color:var(--accent-ink);font-weight:500;white-space:nowrap}
 .dishes{display:grid;gap:10px;list-style:none;margin:0;padding:0}
-.dish{display:grid;grid-template-columns:72px 1fr;gap:14px;align-items:center;padding:10px;border-radius:16px;background:var(--card);border:1px solid var(--line);position:relative}
+.dish{--dc:var(--mc);display:grid;grid-template-columns:72px 1fr;gap:14px;align-items:center;padding:10px;border-radius:16px;background:var(--card);border:1px solid var(--line);position:relative}
 .dish::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;border-radius:0 3px 3px 0;background:var(--mc)}
 .dish img,.ph{width:72px;height:72px;object-fit:cover;border-radius:12px;display:block}
-.ph{background:conic-gradient(from 30deg,var(--mc) 0 28%,#EFE6D8 28% 40%,var(--mc) 40% 62%,#E9DFCF 62% 100%);position:relative}
-.ph::after{content:"";position:absolute;inset:26%;border-radius:50%;background:var(--card)}
 .dish b,.amb-card b{font-family:var(--serif);font-size:18px;font-weight:700;line-height:1.3;display:block}
 .en{font-family:var(--latin);font-size:12px;letter-spacing:.08em;color:var(--ink-3);display:block}
-.one{font-size:13px;color:#7D766B;line-height:1.55;margin:4px 0 0}
-.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}
-.tag{font-size:11.5px;padding:1px 8px;border-radius:999px;border:1px solid var(--line);color:var(--ink-2);white-space:nowrap;background:var(--card)}
-.tag.lim{border-color:transparent;background:var(--accent-bg);color:var(--accent-ink);font-weight:500}
+.one{margin:4px 0 0}
 .dish.tbd{border-style:dashed;background:transparent}
 .dish.tbd b{color:var(--ink-3)}
 .dish.tbd .ph{opacity:.45}
@@ -120,15 +63,15 @@ html[lang="en"] .title .t1{letter-spacing:.06em;font-size:clamp(30px,8.4vw,46px)
 .show .cal b{font-size:22px;font-weight:500;font-variant-numeric:tabular-nums}
 .show .cal small{font-size:10px;letter-spacing:.18em;margin-top:3px}
 .show .info b{font-family:var(--serif);font-size:18px;font-weight:700;line-height:1.3;display:block}
-.show .meta{display:block;font-size:12.5px;color:var(--ink-3);margin-top:4px}
+.show .meta{display:block;font-size:12px;color:var(--ink-3);margin-top:4px}
 .show .chev{color:var(--ink-3);font-size:22px}
 
 /* admission gate */
 .gate{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:6px}
-.code{font-family:var(--latin);font-size:26px;letter-spacing:.35em;text-align:center;width:100%;max-width:300px;padding:10px 0 10px .35em;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font-variant-numeric:tabular-nums}
+.code{font-family:var(--latin);font-size:26px;letter-spacing:.35em;text-align:center;width:100%;max-width:300px;padding:10px 0 10px .35em;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font-variant-numeric:tabular-nums}
 .code::placeholder{color:var(--ink-3)}
 .enter{display:inline-flex;align-items:center;padding:11px 18px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:500;font-size:14px}
-.linkbtn{display:inline-block;margin-top:18px;font-size:13.5px;font-weight:500;color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.linkbtn{display:inline-block;margin-top:18px;font-size:13px;font-weight:500;color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* wrong concert */
@@ -138,31 +81,8 @@ html[lang="en"] .title .t1{letter-spacing:.06em;font-size:clamp(30px,8.4vw,46px)
 .wrong .linkbtn{display:block;margin-top:16px}
 
 /* footer */
-.share{margin-top:40px;padding-block:30px 44px;border-top:1px solid var(--line);background:rgba(244,239,230,.92)}
-.share h2{font-family:var(--serif);font-size:21px;margin:0}
-.share .note{font-size:15px;color:var(--ink-2);line-height:1.85;margin:10px 0 0}
 .homelink{display:inline-block;margin-top:22px;font-size:14px;font-weight:500;color:var(--accent);text-underline-offset:3px}
-.fine{font-size:12px;color:var(--ink-3);margin-top:22px;line-height:1.7}
-@media (max-width:640px){ .brand span{display:none} .tab{padding:5px 9px;font-size:13px} }
-/* phones: four tabs no longer fit beside the logo and controls, so they take a second row as a full-width segmented control */
-@media (max-width:480px){
-  .bar .wrap{flex-wrap:wrap;height:auto;padding-block:9px 8px;row-gap:6px}
-  .brand span{display:inline}
-  .tabs{order:1;flex:1 0 100%;margin-left:0} .ctl{margin-left:auto}
-  .tab{flex:1;text-align:center;padding:5px 4px}
-}
-@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 
-/* dark theme (same tokens as index.html) */
-html[data-theme="dark"]{color-scheme:dark;
-  --bg:#1D1E17; --bg-2:#21221A; --card:#26271F; --ink:#F3EFE7; --ink-2:#CFC9BA; --ink-3:#968D7B;
-  --line:#32332A; --accent:#889670; --accent-bg:#262C1E; --accent-ink:#C6CFB1}
-html[data-theme="dark"] .bar{background:rgba(29,30,23,.86)}
-html[data-theme="dark"] .title .t1{text-shadow:0 0 18px rgba(29,30,23,.9)}
-html[data-theme="dark"] .one{color:var(--ink-3)}
-html[data-theme="dark"] .ph{background:conic-gradient(from 30deg,var(--mc) 0 28%,#26271F 28% 40%,var(--mc) 40% 62%,#32332A 62% 100%)}
-html[data-theme="dark"] .share{background:rgba(38,39,31,.92)}
-html[data-theme="dark"] .rose i{mix-blend-mode:screen;opacity:.3}
 html[data-theme="dark"] .illo rect{fill:#26271F;stroke:#3E3F34}
 </style>
 </head>
@@ -183,10 +103,7 @@ html[data-theme="dark"] .illo rect{fill:#26271F;stroke:#3E3F34}
 
 <main>
   <div class="hero-box">
-    <div class="rose" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i>
-      <svg viewBox="-64 -64 128 128"><circle r="64" fill="var(--bg)" fill-opacity=".94"/><defs><path id="hubArc" d="M-52 0A52 52 0 0 1 52 0"/></defs>
-        <text font-family="Jost,Futura,sans-serif" font-size="11" letter-spacing="1.4" fill="currentColor"><textPath href="#hubArc" startOffset="50%" text-anchor="middle">What's your SYMPHONY?</textPath></text></svg>
-    </div>
+    <svg class="plate" id="plate" viewBox="-320 -320 640 640" aria-hidden="true"><defs><path id="hubArc" d="M-52 0A52 52 0 0 1 52 0"/></defs></svg>
     <div class="hero wrap" id="hero"></div>
   </div>
   <div class="wrap" id="body"></div>
@@ -194,6 +111,7 @@ html[data-theme="dark"] .illo rect{fill:#26271F;stroke:#3E3F34}
 
 <footer class="share"><div class="wrap" id="foot"></div></footer>
 
+<script src="plating.js"></script>
 <script>
 (function(){
 /* ---------- template data: one object per symphony; every text is {zh,en} ----------
@@ -247,6 +165,12 @@ const unlocked=s=>store.get('symph-'+s.id)==='1';
 const want=new URLSearchParams(location.search).get('s');
 const S=SYMPHONIES.find(s=>s.id===want)||null;
 $('.tabs').scrollLeft=1e4; /* this tab is last in the row; keep it in view when the row has to scroll */
+
+/* ---------- hero plate: the menu's plating motif as SVG, one layer per group (plate, sauce, garnish) ---------- */
+{const svg=$('#plate'),NS='http://www.w3.org/2000/svg';
+  plating(11,250,{m:3,k:3,l:4,c:14}).forEach((items,i)=>{const g=document.createElementNS(NS,'g');g.setAttribute('class','lyr');g.style.setProperty('--t',[240,170,110][i]+'s');if(i===1)g.style.animationDirection='reverse';
+    g.innerHTML=items.map(p=>`<path d="${p.d}" fill="${p.c}" fill-opacity="${p.o.toFixed(2)}"/>`).join('');svg.appendChild(g)});
+  svg.insertAdjacentHTML('beforeend',`<circle r="64" class="hub"/><text><textPath href="#hubArc" startOffset="50%" text-anchor="middle">What's your SYMPHONY?</textPath></text>`)}
 
 /* ---------- hero: the landing talks about all concerts, a sub-page about one ---------- */
 function hero(s){
@@ -304,9 +228,9 @@ const TICKET=`<svg class="illo" viewBox="0 0 280 170" aria-hidden="true">
   <g transform="rotate(-7 140 85)">
     <rect x="46" y="38" width="188" height="94" rx="12" fill="var(--bg-2)" stroke="var(--line)" mask="url(#tk)"/>
     <line x1="172" y1="44" x2="172" y2="126" stroke="var(--ink-3)" stroke-dasharray="3 5" opacity=".6"/>
-    <text x="64" y="68" font-family="Jost,Futura,sans-serif" font-size="8.5" letter-spacing="2.2" fill="var(--ink-3)">KENNY PROJECT</text>
+    <text x="64" y="68" font-family="Hanken Grotesk,sans-serif" font-size="8.5" letter-spacing="2.2" fill="var(--ink-3)">KENNY PROJECT</text>
     <text x="64" y="92" font-family="Noto Serif TC,serif" font-weight="900" font-size="14" textLength="96" lengthAdjust="spacingAndGlyphs" fill="var(--ink)">SYMPHONIES</text>
-    <text x="64" y="112" font-family="Jost,Futura,sans-serif" font-size="8.5" letter-spacing="2.2" fill="var(--ink-3)">ADMIT ONE</text>
+    <text x="64" y="112" font-family="Hanken Grotesk,sans-serif" font-size="8.5" letter-spacing="2.2" fill="var(--ink-3)">ADMIT ONE</text>
     <circle cx="203" cy="85" r="26" fill="none" stroke="#D6455A" stroke-width="2.5" opacity=".85"/>
     <text x="203" y="97" text-anchor="middle" font-family="Noto Serif TC,serif" font-weight="900" font-size="34" fill="#D6455A">?</text>
   </g></svg>`;

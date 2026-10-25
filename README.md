@@ -24,7 +24,8 @@ Fonts load from Google Fonts; everything else is local. Google Analytics tag rem
 ## Features
 
 - **Language toggle** (EN / 中) and **theme toggle** (sun / moon) in the header. Choice is saved in `localStorage`; first visit follows the browser language and OS colour scheme.
-- `site/i18n.js` holds the English dictionary and the theme/lang bootstrap. Colour and type tokens follow the mise. design system: light tokens at the top of the `<style>` block in `index.html`, dark tokens at the end. `symphonies.html` keeps its own copy.
+- `site/i18n.js` holds the English dictionary and the theme/lang bootstrap. `site/style.css` holds the [design system](https://claude.ai/artifact/4SAq4UJfqT4viF7YMDHpPc) tokens (light and dark) and the parts both pages share; each page adds its own layout inline.
+- **Plating motif**: `site/plating.js` draws a dressed plate (rim, spoon swooshes, dot trails, herbs, crumbs) from a seed. The menu paints it to canvases that turn with the scroll; Symphonies draws it as SVG.
 - URL overrides for sharing a specific view: `?lang=en&theme=dark`.
 - **Symphonies** tab → `site/symphonies.html`, a standalone full-course menu site in the same look. The landing lists every concert; `?s=<id>` opens one behind an entry code. Each symphony is one object in the `SYMPHONIES` array (`id`, `date`, `code`, movements, ambience). The code is plain text in the file and the unlock is remembered in `localStorage`, so it steers guests rather than secures anything.
 - **Logo**: `site/logo/le-dressage-mark.svg` (favicon + header) and `le-dressage-wordmark.svg`. Same olive tile and plate ring as the mise. mark; the clay moves from beside the plate onto it as a sauce swoosh.
